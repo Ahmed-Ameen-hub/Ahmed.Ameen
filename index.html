@@ -3,87 +3,121 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#fffaf3" />
   <title>Ahmed Ameen — Research & Publications</title>
   <meta name="description" content="Research landing page: Islamic/Ottoman architecture, epigraphy, waqf & madrasas, and heritage science (manuscript conservation)." />
   <style>
-    :root{--bg:#0b1020;--card:#111a33;--muted:#c6d0ff;--text:#f5f7ff;--accent:#7dd3fc;--accent2:#a78bfa;--line:rgba(255,255,255,.12)}
+    :root{--bg:#fffaf3;--card:#ffffff;--muted:#53607d;--text:#1d2744;--accent:#0a8f8c;--accent2:#7c5cff;--coral:#ff6b6b;--sun:#ffb020;--line:rgba(29,39,68,.12);--shadow:0 10px 30px rgba(70,90,160,.12)}
     *{box-sizing:border-box}
 
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial; background:radial-gradient(1200px 600px at 20% 10%, rgba(125,211,252,.15), transparent 55%), radial-gradient(900px 500px at 80% 0%, rgba(167,139,250,.14), transparent 60%), var(--bg); color:var(--text)}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial; color:var(--text);
+      background:radial-gradient(900px 520px at 8% -5%, rgba(255,208,102,.45), transparent 60%),
+                 radial-gradient(900px 520px at 95% 0%, rgba(125,200,255,.45), transparent 60%),
+                 radial-gradient(900px 600px at 60% 105%, rgba(255,170,210,.35), transparent 60%),
+                 linear-gradient(180deg,#fffaf3 0%,#f3f9ff 55%,#fff5fb 100%); background-attachment:fixed}
     html[dir="rtl"] body{font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif}
 
     a{color:var(--accent); text-decoration:none} a:hover{text-decoration:underline}
 
-    .wrap{max-width:1050px;margin:0 auto;padding:28px 18px 56px}
+    .wrap{max-width:1080px;margin:0 auto;padding:28px 18px 56px}
     .topbar{display:flex;justify-content:flex-end}
 
-    header{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-top:10px}
+    header{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-top:10px;padding:24px;border-radius:26px;
+      background:linear-gradient(135deg,rgba(255,255,255,.92),rgba(255,255,255,.7)); border:1px solid var(--line); box-shadow:var(--shadow); position:relative; overflow:hidden}
+    header::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:linear-gradient(90deg,var(--sun),var(--coral),var(--accent2),var(--accent))}
     .title{min-width:280px}
-    h1{margin:0 0 8px;font-size:32px;letter-spacing:.2px}
+    h1{margin:6px 0 8px;font-size:38px;letter-spacing:.2px;background:linear-gradient(90deg,#0a8f8c,#7c5cff 55%,#ff6b6b);-webkit-background-clip:text;background-clip:text;color:transparent}
     .subtitle{margin:0;color:var(--muted);line-height:1.6}
 
     .pillrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .pill{border:1px solid var(--line); background:rgba(255,255,255,.04); padding:8px 10px;border-radius:999px; font-size:13px; color:var(--muted)}
+    .pill{border:1px solid var(--line); background:#fff; padding:7px 12px;border-radius:999px; font-size:13px; color:var(--muted)}
+    .pillrow .pill:nth-child(1){background:#e3f6f5;color:#06716f;border-color:#bfe9e7}
+    .pillrow .pill:nth-child(2){background:#fff1d6;color:#9a5b00;border-color:#ffe0a3}
+    .pillrow .pill:nth-child(3){background:#ffe6e6;color:#b23a3a;border-color:#ffc9c9}
+    .pillrow .pill:nth-child(4){background:#ece7ff;color:#5a3fd0;border-color:#d6ccff}
+    .pillrow .pill:nth-child(5){background:#e1f0ff;color:#1c62b3;border-color:#bcdcff}
+    .pubMeta .pill,.pill.sm{padding:3px 9px;font-size:12px}
+    .pill.tagSc{background:#dff7e8;color:#12703a;border-color:#b5e8c8;font-weight:600}
+    .pill.tagNon{background:#fff1d6;color:#9a5b00;border-color:#ffe0a3;font-weight:600}
 
     .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:flex-end}
-    .btn{appearance:none;border:1px solid var(--line); background:rgba(255,255,255,.06); color:var(--text); padding:10px 12px;border-radius:12px; font-size:14px; cursor:pointer}
-    .btn:hover{border-color:rgba(125,211,252,.55)}
-    .btn.primary{background:linear-gradient(135deg, rgba(125,211,252,.22), rgba(167,139,250,.18)); border-color:rgba(125,211,252,.4)}
+    .btn{appearance:none;border:1px solid var(--line); background:#fff; color:var(--text); padding:10px 14px;border-radius:12px; font-size:14px; cursor:pointer; transition:transform .12s, box-shadow .12s, border-color .12s}
+    .btn:hover{border-color:var(--accent2); transform:translateY(-1px); box-shadow:0 6px 16px rgba(124,92,255,.18); text-decoration:none}
+    .btn.primary{background:linear-gradient(135deg,#0a8f8c,#7c5cff); border-color:transparent; color:#fff}
 
-    .toggle{display:flex;align-items:center;gap:8px;border:1px solid var(--line); background:rgba(255,255,255,.04); padding:6px; border-radius:999px}
-    .seg{padding:8px 10px;border-radius:999px;border:1px solid transparent; cursor:pointer; font-size:13px; color:var(--muted); background:transparent}
-    .seg.active{color:var(--text); background:rgba(255,255,255,.10); border-color:rgba(255,255,255,.14)}
+    .toggle{display:flex;align-items:center;gap:6px;border:1px solid var(--line); background:#fff; padding:5px; border-radius:999px; flex-wrap:wrap}
+    .seg{padding:7px 12px;border-radius:999px;border:1px solid transparent; cursor:pointer; font-size:13px; color:var(--muted); background:transparent}
+    .seg:hover{background:#f1ecff}
+    .seg.active{color:#fff; background:linear-gradient(135deg,#7c5cff,#0a8f8c); box-shadow:0 4px 12px rgba(124,92,255,.3)}
 
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:18px}
-    .card{grid-column:span 12; border:1px solid var(--line); background:rgba(17,26,51,.72); backdrop-filter:blur(8px); border-radius:18px; padding:16px}
-    .card h2{margin:0 0 10px;font-size:18px}
+    .card{grid-column:span 12; border:1px solid var(--line); background:rgba(255,255,255,.88); backdrop-filter:blur(8px); border-radius:22px; padding:20px; box-shadow:var(--shadow)}
+    .card h2{margin:0 0 12px;font-size:21px;display:inline-block;padding-bottom:4px;border-bottom:4px solid var(--sun);border-radius:2px}
+    #whycite .card h2{border-color:var(--coral)} #themes .card h2{border-color:var(--accent2)} #publications h2{border-color:var(--accent)}
     .card p{margin:0;color:var(--muted);line-height:1.65}
 
-    .aboutGrid{display:grid;grid-template-columns:1.2fr .8fr; gap:12px}
-    .box{border:1px solid var(--line); background:rgba(255,255,255,.03); border-radius:16px; padding:14px}
-    .box h3{margin:0 0 8px;font-size:15px}
+    .aboutGrid{display:grid;grid-template-columns:1.2fr .8fr; gap:14px}
+    .box{border:1px solid var(--line); background:linear-gradient(180deg,#ffffff,#f8fbff); border-radius:18px; padding:16px}
+    .box h3{margin:0 0 8px;font-size:16px;color:var(--accent2)}
 
     .links{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line); background:rgba(255,255,255,.04); padding:8px 10px;border-radius:999px; font-size:13px; color:var(--text)}
+    .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line); background:#fff; padding:8px 12px;border-radius:999px; font-size:13px; color:var(--text); transition:all .12s}
+    .chip:hover{background:linear-gradient(135deg,#e3f6f5,#ece7ff); text-decoration:none; transform:translateY(-1px)}
 
     .themes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px}
-    .theme{border:1px solid var(--line); background:rgba(255,255,255,.03); border-radius:16px;padding:14px}
-    .theme h3{margin:0 0 6px;font-size:15px}
+    .theme{border:1px solid var(--line); background:#fff; border-radius:18px;padding:16px}
+    .theme:nth-child(1){background:#e9f8f7;border-color:#bfe9e7} .theme:nth-child(2){background:#fff4dd;border-color:#ffe0a3}
+    .theme:nth-child(3){background:#ffeaea;border-color:#ffc9c9} .theme:nth-child(4){background:#eee9ff;border-color:#d6ccff}
+    .theme h3{margin:0 0 6px;font-size:16px}
     .theme ul{margin:8px 0 0; padding-left:18px; color:var(--muted); line-height:1.65}
     html[dir="rtl"] .theme ul{padding-left:0; padding-right:18px}
 
     .pubsHeader{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
     .search{display:flex;gap:8px;align-items:center}
-    input[type="search"]{width:min(420px,85vw); padding:10px 12px;border-radius:12px; border:1px solid var(--line); background:rgba(255,255,255,.04); color:var(--text); outline:none}
-    input[type="search"]::placeholder{color:rgba(198,208,255,.7)}
+    input[type="search"]{width:min(420px,85vw); padding:10px 14px;border-radius:12px; border:1px solid var(--line); background:#fff; color:var(--text); outline:none}
+    input[type="search"]:focus{border-color:var(--accent2);box-shadow:0 0 0 3px rgba(124,92,255,.18)}
+    input[type="search"]::placeholder{color:#8c97b3}
 
-    .pub{border:1px solid var(--line); background:rgba(255,255,255,.03); border-radius:16px; padding:14px; margin-top:12px}
+    .pub{border:1px solid var(--line); border-left:6px solid #b7c0da; background:#fff; border-radius:16px; padding:14px 16px; margin-top:12px; box-shadow:0 4px 14px rgba(70,90,160,.07); transition:transform .12s, box-shadow .12s}
+    .pub:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(70,90,160,.15)}
+    .pub[data-theme="Architecture"]{border-left-color:#0a8f8c}
+    .pub[data-theme="Epigraphy"]{border-left-color:#ff6b6b}
+    .pub[data-theme="Waqf"]{border-left-color:#7c5cff}
+    .pub[data-theme="Heritage Science"]{border-left-color:#2f8cff}
+    .pub[data-theme="History & Sources"]{border-left-color:#ffb020}
     .pubTop{display:flex;gap:10px;justify-content:space-between;flex-wrap:wrap}
     .pubTitle{margin:0;font-size:15px;line-height:1.4}
     .pubMeta{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
     .pubActions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-    .mini{padding:8px 10px;border-radius:12px;font-size:13px}
+    .mini{padding:7px 10px;border-radius:12px;font-size:13px}
 
-    footer{margin-top:18px;color:rgba(198,208,255,.75);font-size:12px;line-height:1.6}
-    .toast{position:fixed; left:50%; bottom:18px; transform:translateX(-50%); background:rgba(10,16,35,.92); border:1px solid var(--line); padding:10px 12px;border-radius:14px; display:none; max-width:min(720px,92vw)}
-    .toast strong{color:var(--accent)}
+    footer{margin-top:18px;color:#6b7694;font-size:12px;line-height:1.6}
+    .toast{position:fixed; left:50%; bottom:18px; transform:translateX(-50%); background:#1d2744; color:#fff; border:1px solid var(--line); padding:10px 14px;border-radius:14px; display:none; max-width:min(720px,92vw); box-shadow:var(--shadow)}
+    .toast strong{color:#ffd47a}
 
-    .stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
-    .stat{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:14px;padding:8px 12px;font-size:13px;color:var(--muted)}
-    .stat b{display:block;font-size:18px;color:var(--accent)}
-    .whyList{margin:10px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-    .whyList li{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:14px;padding:12px;color:var(--muted);line-height:1.6;font-size:14px}
+    .stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .stat{border:1px solid var(--line);background:#fff;border-radius:16px;padding:10px 14px;font-size:13px;color:var(--muted);min-width:120px}
+    .stat b{display:block;font-size:26px;line-height:1.1}
+    .stat.c1{background:#e9f8f7;border-color:#bfe9e7} .stat.c1 b{color:#0a8f8c}
+    .stat.c2{background:#fff4dd;border-color:#ffe0a3} .stat.c2 b{color:#d98200}
+    .stat.c3{background:#eee9ff;border-color:#d6ccff} .stat.c3 b{color:#6a49e8}
+    .stat.c4{background:#ffeaea;border-color:#ffc9c9} .stat.c4 b{color:#e04848}
+    .stat.note{flex-basis:100%;border:none;background:none;padding:0;font-size:12px;min-width:0}
+    .whyList{margin:12px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .whyList li{border:1px solid var(--line);background:#fff;border-radius:16px;padding:14px;color:var(--muted);line-height:1.6;font-size:14px;border-top:4px solid var(--sun)}
+    .whyList li:nth-child(4n+2){border-top-color:var(--coral)} .whyList li:nth-child(4n+3){border-top-color:var(--accent2)} .whyList li:nth-child(4n+4){border-top-color:var(--accent)}
     .whyList li b{color:var(--text)}
     details.why{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
-    details.why summary{cursor:pointer;color:var(--accent);font-size:13px}
+    details.why summary{cursor:pointer;color:var(--accent2);font-size:13px;font-weight:600}
     details.why p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
     details.why p b{color:var(--text)}
-    .facets select{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:8px 10px;font-size:13px}
+    .facets select{background:#fff;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:13px}
     .facets select option{color:#111}
     @media (max-width:860px){
       .whyList{grid-template-columns:1fr}
       .themes{grid-template-columns:1fr}
       .aboutGrid{grid-template-columns:1fr}
+      h1{font-size:30px}
     }
   </style>
 </head>
@@ -150,7 +184,7 @@
     <section class="grid" id="whycite">
       <div class="card">
         <h2 data-i18n="why_title">Why cite this work?</h2>
-        <p data-i18n="why_intro">If your own research touches any of the situations below, one of these papers offers a ready evidence base, method or open question you can build on. Each publication below has a “Why cite this?” note.</p>
+        <p data-i18n="why_intro">If your own research touches any of the situations below, one of these papers offers a ready evidence base, method or open question you can build on. Publications with a “Why cite this?” note are marked below.</p>
         <ul class="whyList">
           <li data-i18n="q1">Are you describing Ottoman mosques, markets or madrasas in Greece or the Balkans? Start from the documented corpus, typologies and patronage studies here.</li>
           <li data-i18n="q2">Are you reading a foundation or dedicatory inscription? See how inscriptions were used to re-date, re-attribute and reinterpret monuments.</li>
@@ -205,8 +239,13 @@
       <div class="card" id="publications">
         <div class="pubsHeader" style="margin-bottom:10px">
           <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-            <h2 style="margin:0" data-i18n="pubs_title">Scopus-indexed publications (DOI + Cite this work)</h2>
-            <div class="toggle" role="group" aria-label="Theme filter" style="margin-left:6px">
+            <h2 style="margin:0" data-i18n="pubs_title">Publications (DOI + Cite this work)</h2>
+            <div class="toggle" role="group" aria-label="Index filter" style="margin-left:6px">
+              <button class="seg active" id="ixSc" type="button" data-i18n="idx_sc">Scopus</button>
+              <button class="seg" id="ixNon" type="button" data-i18n="idx_non">Other publications</button>
+              <button class="seg" id="ixAll" type="button" data-i18n="idx_all">All</button>
+            </div>
+            <div class="toggle" role="group" aria-label="Theme filter">
               <button class="seg active" id="thAll" type="button">All</button>
               <button class="seg" id="thArch" type="button">Architecture</button>
               <button class="seg" id="thEpi" type="button">Epigraphy</button>
@@ -240,7 +279,7 @@
 
     // ====== 1) EDIT THESE FIELDS (optional) ======
     const PROFILE = {
-      email: "ahmed.ameen@sharjah.ac.ae", "ahmed.ameen@fayoum.edu.eg", "ahmed.ameen@qalampk.nl",
+      email: "",
       orcid: "0000-0002-1898-2781",
       scopus: "https://www.scopus.com/authid/detail.uri?authorId=57217019960",
       webOfScience: "https://www.webofscience.com/wos/author/record/IVH-3451-2023",
@@ -273,7 +312,7 @@
         role: "Professor, History and Islamic Civilization, University of Sharjah (UAE)",
         about_text2: "My research documents and interprets Ottoman monuments and their inscriptions in Greece and the Balkans, and extends to Ayyubid madrasas in Cairo, Qur’anic epigraphy in Quanzhou, the UAE’s Islamic heritage, and the material analysis of Islamic–African manuscripts. I hold a PhD in Islamic Archaeology (University of Athens, 2010) and have served as Editor-in-Chief of SHEDET, a Scopus-indexed journal. My book Islamic Architecture in Greece: Mosques (Bibliotheca Alexandrina, 2017) catalogues the mosque heritage of a country with roughly 300 Islamic antiquities.",
         why_title: "Why cite this work?",
-        why_intro: "If your own research touches any of the situations below, one of these papers offers a ready evidence base, method or open question you can build on. Each publication below has a “Why cite this?” note.",
+        why_intro: "If your own research touches any of the situations below, one of these papers offers a ready evidence base, method or open question you can build on. Publications with a “Why cite this?” note are marked below.",
         q1: "Are you describing Ottoman mosques, markets or madrasas in Greece or the Balkans? Start from the documented corpus, typologies and patronage studies here.",
         q2: "Are you reading a foundation or dedicatory inscription? See how inscriptions were used to re-date, re-attribute and reinterpret monuments.",
         q3: "Does colour affect how an inscription is seen and read? The Didymóteichon study offers a case and a framework for visual impact.",
@@ -282,7 +321,7 @@
         q6: "Do you need a precedent for linking text, patron and architecture? Several papers show how epigraphy, waqf and building evidence reinforce one another.",
         q8: "Are you working with Islamic coins, chronicles or manuscript certificates as historical sources? See the source-critical approaches applied to them.",
         why_btn: "Why cite this?", lbl_cite: "Cite for", lbl_method: "Reusable method", lbl_q: "Open question it raises",
-        st_pubs: "Scopus-indexed papers listed below", st_art: "articles", st_books: "books", st_sc: "Scopus citations (h 4)", st_gs: "Google Scholar citations (h 5)", st_note: "Citation totals as reported in the CV (Sep 2026); see the live Scopus and Google Scholar profiles for current counts.",
+        st_pubs: "Scopus-indexed papers", st_other: "other publications (books, chapters, articles…)", st_sc: "Scopus citations", st_gs: "Google Scholar citations", st_note: "Citation totals as supplied by the author (Oct 2026); see the live profiles for current counts.", idx_sc: "Scopus", idx_non: "Other publications", idx_all: "All",
         about_links: "Profiles",
         about_hint: "Tip: keep your author identifiers consistent (name + affiliation + ORCID) to reduce citation splitting.",
         themes_title: "Research themes",
@@ -302,7 +341,7 @@
         t4a: "Material and multi-analytical study of paper manuscripts",
         t4b: "Conservation science and evidence-based preservation",
         t4c: "Museum collections and Islamic–African manuscript heritage",
-        pubs_title: "Scopus-indexed publications (DOI + Cite this work)",
+        pubs_title: "Publications (DOI + Cite this work)",
         footer_tip: "Tip: “Cite this work” copies a ready-to-paste citation (APA). Use “BibTeX” for LaTeX users and “RIS” for EndNote/Zotero.",
         cite_btn: "Cite this work (APA)",
         bib_btn: "BibTeX",
@@ -331,7 +370,7 @@
         about_text2: "يوثّق بحثي المنشآت العثمانية ونقوشها في اليونان والبلقان ويفسّرها، ويمتد إلى المدارس الأيوبية في القاهرة، والنقوش القرآنية في تشيوانتشو، والتراث الإسلامي في الإمارات، والتحليل المادي للمخطوطات الإسلامية–الأفريقية. وحصلت على الدكتوراه في الآثار الإسلامية (جامعة أثينا، 2010)، وترأست تحرير مجلة «شدت» المفهرسة في سكوبس. ويضم كتابي «العمارة الإسلامية في اليونان: المساجد» (مكتبة الإسكندرية، 2017) مساجد بلد يضم نحو 300 أثر إسلامي.",
         role: "أستاذ التاريخ والحضارة الإسلامية، جامعة الشارقة (الإمارات)",
         why_title: "لماذا تستشهد بهذه الأعمال؟",
-        why_intro: "إذا كان بحثك يتقاطع مع أي من الحالات التالية، ففي هذه الأعمال مادة موثقة أو منهج أو سؤال بحثي مفتوح يمكنك البناء عليه. ولكل منشور أدناه ملاحظة «لماذا الاستشهاد؟».",
+        why_intro: "إذا كان بحثك يتقاطع مع أي من الحالات التالية، ففي هذه الأعمال مادة موثقة أو منهج أو سؤال بحثي مفتوح يمكنك البناء عليه. والمنشورات التي تحمل ملاحظة «لماذا الاستشهاد؟» موضّحة أدناه.",
         q1: "هل تصف مساجد أو أسواقًا أو مدارس عثمانية في اليونان أو البلقان؟ ابدأ من المدوّنة الموثقة والتصنيفات ودراسات الرعاية هنا.",
         q2: "هل تقرأ نقش تأسيس أو إنشاء؟ انظر كيف استُخدمت النقوش لإعادة التأريخ والنسبة والتفسير.",
         q3: "هل يؤثر اللون في رؤية النقش وقراءته؟ تقدّم دراسة ديديموتيخو حالة وإطارًا للأثر البصري.",
@@ -340,7 +379,7 @@
         q6: "هل تحتاج سابقة تربط النص بالراعي والعمارة؟ تبيّن أعمال عدة كيف تتعاضد النقوش والوقف والدليل المعماري.",
         q8: "هل تعمل على العملات الإسلامية أو الحوليات أو شهادات السماع في المخطوطات كمصادر تاريخية؟ انظر مناهج نقد المصادر المطبقة عليها.",
         why_btn: "لماذا الاستشهاد؟", lbl_cite: "استشهد به في", lbl_method: "منهج قابل لإعادة الاستخدام", lbl_q: "سؤال بحثي مفتوح",
-        st_pubs: "بحثًا مفهرسًا في سكوبس أدناه", st_art: "مقالًا", st_books: "كتب", st_sc: "استشهادات سكوبس (h 4)", st_gs: "استشهادات جوجل سكولار (h 5)", st_note: "الأرقام كما وردت في السيرة الذاتية (سبتمبر 2026)؛ يُرجى التحقق منها في سكوبس وجوجل سكولار.",
+        st_pubs: "بحثًا مفهرسًا في سكوبس", st_other: "منشورات أخرى (كتب، فصول، مقالات…)", st_sc: "استشهادات سكوبس", st_gs: "استشهادات جوجل سكولار", st_note: "إجماليات الاستشهاد كما قدّمها الباحث (أكتوبر 2026)؛ راجع الملفات الحية للأرقام الحالية.", idx_sc: "سكوبس", idx_non: "منشورات أخرى", idx_all: "الكل",
         about_links: "الملفات التعريفية",
         about_hint: "نصيحة: حافظ على اتساق اسم الباحث/الانتماء/ORCID لتقليل تشتت الاستشهادات بين ملفات مختلفة.",
         themes_title: "محاور البحث",
@@ -360,7 +399,7 @@
         t4a: "الدراسة المادية والتحليل متعدد الأدوات للمخطوطات الورقية",
         t4b: "علوم الحفظ والترميم المبنية على الدليل",
         t4c: "مجموعات المتاحف وتراث المخطوطات الإسلامية–الأفريقية",
-        pubs_title: "المنشورات المفهرسة في سكوبس (DOI + زر الاستشهاد)",
+        pubs_title: "المنشورات (DOI + زر الاستشهاد)",
         footer_tip: "نصيحة: زر «استشهد بهذا العمل» ينسخ صيغة استشهاد جاهزة (APA). استخدم «BibTeX» لبرامج LaTeX و«RIS» لـ EndNote/Zotero.",
         cite_btn: "استشهد بهذا العمل (APA)",
         bib_btn: "BibTeX",
@@ -739,6 +778,839 @@
   ],
   "key": "10.18860/jia.v5i3.5365",
   "scopus": true
+ },
+ {
+  "year": 2026,
+  "authors": "Ahmed Ameen; Farag El-Hussiny; Nadjib Benkheira",
+  "title": "Islamic Epigraphic Heritage of the Ottoman Balkans: The Case of Didymoteicho (Greece)",
+  "venue": "Abgadiyat 21 (2027), accepted",
+  "pages": "",
+  "doi": "",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Ottoman",
+   "epigraphy",
+   "Didymoteicho"
+  ],
+  "key": "Islamic Epigraphic Heritage of the Ottoman Balkans: The Case of Didymoteicho (Greece)",
+  "scopus": false
+ },
+ {
+  "year": 2026,
+  "authors": "Ahmed Ameen",
+  "title": "The Compendium of the Histories of the Arabian Peninsula and Persia, 1622–1810 CE: A Landmark in Gulf",
+  "venue": "Qalamos Heritage Studies 2(1)",
+  "pages": "87–97",
+  "doi": "10.5281/zenodo.21247890",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "UAE/Gulf",
+  "evidence": "Textual sources",
+  "type": "Article",
+  "tags": [
+   "Gulf",
+   "historiography",
+   "manuscript"
+  ],
+  "key": "10.5281/zenodo.21247890",
+  "scopus": false
+ },
+ {
+  "year": 2026,
+  "authors": "Mohamed Khater; Nagwa Zouair; Mohammed Nour Eldeen Sayed; Mohamed Alkadhat; Ahmed Ameen",
+  "title": "Legislating responsibility: evaluating the impact of tourism law on ethical practices and environmental stewardship in global destinations",
+  "venue": "Scientific Culture 12(2.1)",
+  "pages": "664–677",
+  "doi": "10.5281/zenodo.122.12658",
+  "url": "",
+  "theme": "Other",
+  "region": "Global",
+  "evidence": "Policy/legal",
+  "type": "Article",
+  "tags": [
+   "tourism law",
+   "ethics",
+   "sustainability"
+  ],
+  "key": "10.5281/zenodo.122.12658",
+  "scopus": false
+ },
+ {
+  "year": 2025,
+  "authors": "Ahmed Ameen",
+  "title": "Voices in Stone: The Architectural and Epigraphic Legacy of Ottoman Greece",
+  "venue": "Qalamos Heritage Studies 1(1)",
+  "pages": "26–37",
+  "doi": "",
+  "url": "https://qalampk.nl/index.php/ojs_files/article/view/2",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Ottoman Greece",
+   "architecture",
+   "epigraphy"
+  ],
+  "key": "https://qalampk.nl/index.php/ojs_files/article/view/2",
+  "scopus": false
+ },
+ {
+  "year": 2025,
+  "authors": "Suzan I. M. Abed; Ahmed Ameen; Atef Mansour M. Ramadan",
+  "title": "The Ilkhanid Mints: An introduction to study of the urban transformation in Iranian cities in the era of Ilkhanid Mongols (656-757 AH / 1258-1355 AD)",
+  "venue": "Journal of the Centre for Islamic Numismatics–Egypt 8(8)",
+  "pages": "201–224",
+  "doi": "10.21608/ince.2026.448237.1037",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "Iran/Central Asia",
+  "evidence": "Numismatics",
+  "type": "Article",
+  "tags": [
+   "numismatics",
+   "Ilkhanid",
+   "urban history"
+  ],
+  "key": "10.21608/ince.2026.448237.1037",
+  "scopus": false
+ },
+ {
+  "year": 2024,
+  "authors": "Mohamed Morsy; Ahmed Ameen",
+  "title": "Collective Waqf and its role in sponsoring the Ottoman Mosques and Medreses in Greece, late 13th/19th and beginning 14th/20th centuries: civilized and archival study",
+  "venue": "Journal of the Faculty of Archaeology, Cairo University 16(27)",
+  "pages": "1363–1393",
+  "doi": "10.21608/JARCH.2024.333288",
+  "url": "",
+  "theme": "Waqf",
+  "region": "Greece/Balkans",
+  "evidence": "Archival/waqf",
+  "type": "Article",
+  "tags": [
+   "waqf",
+   "Greece",
+   "mosques",
+   "medreses"
+  ],
+  "key": "10.21608/JARCH.2024.333288",
+  "scopus": false
+ },
+ {
+  "year": 2023,
+  "authors": "Ahmed Ameen",
+  "title": "Evliyâ Çelebi and his work “Seyahatname”: a reading in his methodology of documenting the heritage of Athens and its buildings (in Arabic)",
+  "venue": "Journal of Archaeology and Tourism-MUST 1(2)",
+  "pages": "1–20",
+  "doi": "10.21608/JATMUST.2023.284702",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "Greece/Balkans",
+  "evidence": "Travellers' accounts",
+  "type": "Article",
+  "tags": [
+   "Evliyâ Çelebi",
+   "Athens",
+   "travellers"
+  ],
+  "key": "10.21608/JATMUST.2023.284702",
+  "scopus": false
+ },
+ {
+  "year": 2022,
+  "authors": "Ahmed Ameen",
+  "title": "The origin of the Twin-Basilica Church and its functional context (in Arabic)",
+  "venue": "Journal of Archaeology and Tourism-MUST 1(1)",
+  "pages": "41–58",
+  "doi": "10.21608/JATMUST.2022.253381",
+  "url": "",
+  "theme": "Architecture",
+  "region": "—",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "church",
+   "basilica",
+   "function"
+  ],
+  "key": "10.21608/JATMUST.2022.253381",
+  "scopus": false
+ },
+ {
+  "year": 2021,
+  "authors": "Ahmed Ameen",
+  "title": "Ottoman Waqf–Medreses in Greece: Archival & architectural study",
+  "venue": "Journal of Architecture, Arts and Humanistic Science 6(25)",
+  "pages": "566–597",
+  "doi": "10.21608/MJAF.2020.25255.1534",
+  "url": "",
+  "theme": "Waqf",
+  "region": "Greece/Balkans",
+  "evidence": "Archival/waqf",
+  "type": "Article",
+  "tags": [
+   "waqf",
+   "medrese",
+   "Greece",
+   "waqfiyya"
+  ],
+  "key": "10.21608/MJAF.2020.25255.1534",
+  "scopus": false
+ },
+ {
+  "year": 2019,
+  "authors": "Ahmed Ameen",
+  "title": "Towards a corpus of the inscriptions of Ottoman buildings in Greece",
+  "venue": "Journal of Anthropological and Archaeological Sciences 1(2)",
+  "pages": "36–46",
+  "doi": "",
+  "url": "https://lupinepublishers.com/anthropological-and-archaeological-sciences/fulltext/towards-a-corpus-of-the-inscriptions-of-ottoman-buildings-in-greece.ID.000107.php",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "corpus",
+   "inscriptions",
+   "Greece"
+  ],
+  "key": "https://lupinepublishers.com/anthropological-and-archaeological-sciences/fulltext/towards-a-corpus-of-the-inscriptions-of-ottoman-buildings-in-greece.ID.000107.php",
+  "scopus": false
+ },
+ {
+  "year": 2019,
+  "authors": "Ahmed Ameen",
+  "title": "Mamlūk Ranks: Motives of usage and their visual impact",
+  "venue": "Abydos 1",
+  "pages": "5–19",
+  "doi": "10.21608/abidus.2019.223391",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Egypt",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Mamluk",
+   "ranks",
+   "visual impact"
+  ],
+  "key": "10.21608/abidus.2019.223391",
+  "scopus": false
+ },
+ {
+  "year": 2019,
+  "authors": "Ahmed Ameen",
+  "title": "Bilingual and trilingual inscriptions of the Ottoman buildings in Greece: a search for the history of late Ottoman period",
+  "venue": "Abgadiyat 14",
+  "pages": "208–243",
+  "doi": "10.21608/abgad.2019.140483",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "multilingual",
+   "epigraphy",
+   "late Ottoman"
+  ],
+  "key": "10.21608/abgad.2019.140483",
+  "scopus": false
+ },
+ {
+  "year": 2016,
+  "authors": "Ahmed Ameen",
+  "title": "The Küçük Cami of Athens: Some considerations in the light of the Travelers' works",
+  "venue": "Turcica 47",
+  "pages": "73–97",
+  "doi": "10.2143/TURC.47.0.3164942",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Travellers' accounts",
+  "type": "Article",
+  "tags": [
+   "Athens",
+   "mosque",
+   "travellers"
+  ],
+  "key": "10.2143/TURC.47.0.3164942",
+  "scopus": false
+ },
+ {
+  "year": 2016,
+  "authors": "Ahmed Ameen",
+  "title": "Characteristics of the Ottoman Traditional Houses in the Libyan Old City of Ghadames: Case Study of Da Babanei House",
+  "venue": "SHEDET 3",
+  "pages": "43–77",
+  "doi": "10.36816/shedet.003.07",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Libya",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "Ghadames",
+   "vernacular",
+   "house"
+  ],
+  "key": "10.36816/shedet.003.07",
+  "scopus": false
+ },
+ {
+  "year": 2014,
+  "authors": "Ahmed Ameen",
+  "title": "The Mehmet Khalil Agha Mosque in the Greek city of Drama",
+  "venue": "SHEDET 1(1)",
+  "pages": "19–34",
+  "doi": "10.36816/shedet.001.02",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "Drama",
+   "mosque",
+   "wall paintings"
+  ],
+  "key": "10.36816/shedet.001.02",
+  "scopus": false
+ },
+ {
+  "year": 2013,
+  "authors": "Ahmed Ameen; Mohamed K. Khallaf",
+  "title": "Dekhaila's Dry-Deck: an archaeological and conservational study",
+  "venue": "Journal of the General Union of Arab Archaeologists 14(1)",
+  "pages": "152–185",
+  "doi": "10.21608/jguaa.2013.2994",
+  "url": "",
+  "theme": "Heritage Science",
+  "region": "Egypt",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "dry dock",
+   "conservation",
+   "Alexandria"
+  ],
+  "key": "10.21608/jguaa.2013.2994",
+  "scopus": false
+ },
+ {
+  "year": 2011,
+  "authors": "Ahmed Ameen",
+  "title": "The Inscriptions of the Damascene Ottoman Residences",
+  "venue": "Abgadiyat 6",
+  "pages": "105–120",
+  "doi": "10.21608/abgad.2011.58283",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Syria/Levant",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Damascus",
+   "houses",
+   "inscriptions"
+  ],
+  "key": "10.21608/abgad.2011.58283",
+  "scopus": false
+ },
+ {
+  "year": 2017,
+  "authors": "Ahmed Ameen",
+  "title": "Islamic Architecture in Greece: Mosques",
+  "venue": "Centre of Islamic Civilization, Bibliotheca Alexandrina (ISBN 978-977-452-434-6)",
+  "pages": "",
+  "doi": "",
+  "url": "https://bibalex.org/IslamicCivilization/en/Publication/PublicationDetails.aspx?Id=2014",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Book",
+  "tags": [
+   "book",
+   "mosques",
+   "Greece",
+   "catalogue"
+  ],
+  "key": "https://bibalex.org/IslamicCivilization/en/Publication/PublicationDetails.aspx?Id=2014",
+  "scopus": false
+ },
+ {
+  "year": 2026,
+  "authors": "Ahmed Ameen",
+  "title": "As'ad Pasha al-Azm Palace: The Visual History of Ottoman Damascus",
+  "venue": "Studies in Heritage, Archaeology, and Islamic Civilisation (1), Qalam Knowledge Production Foundation, Netherlands (in press)",
+  "pages": "",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Syria/Levant",
+  "evidence": "Architectural survey",
+  "type": "Book",
+  "tags": [
+   "Damascus",
+   "palace",
+   "visual history"
+  ],
+  "key": "As'ad Pasha al-Azm Palace: The Visual History of Ottoman Damascus",
+  "scopus": false
+ },
+ {
+  "year": 2017,
+  "authors": "Yang Guiping; translated from English into Arabic by Ahmed Ameen",
+  "title": "Islamic Art in China",
+  "venue": "Islamic Civilization Centre, Bibliotheca Alexandrina (ISBN 978-977-452-456-6)",
+  "pages": "",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "China",
+  "evidence": "Textual sources",
+  "type": "Translation",
+  "tags": [
+   "translation",
+   "China",
+   "Islamic art"
+  ],
+  "key": "Islamic Art in China",
+  "scopus": false
+ },
+ {
+  "year": 2016,
+  "authors": "Ahmed Ameen; Shaker Mousa",
+  "title": "The Ottoman Athens as Evliya Çelebi saw (in Arabic)",
+  "venue": "Alexandrina – Bibliotheca Alexandrina, Egypt",
+  "pages": "",
+  "doi": "",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "Greece/Balkans",
+  "evidence": "Travellers' accounts",
+  "type": "Book",
+  "tags": [
+   "Athens",
+   "Evliyâ Çelebi",
+   "travellers"
+  ],
+  "key": "The Ottoman Athens as Evliya Çelebi saw (in Arabic)",
+  "scopus": false
+ },
+ {
+  "year": 2015,
+  "authors": "Ahmed Ameen; Shaker Mousa",
+  "title": "Modern Greek Language for Arabs (in Arabic)",
+  "venue": "Fayoum, Egypt",
+  "pages": "",
+  "doi": "",
+  "url": "",
+  "theme": "Other",
+  "region": "Greece/Balkans",
+  "evidence": "Language teaching",
+  "type": "Book",
+  "tags": [
+   "Greek",
+   "language learning"
+  ],
+  "key": "Modern Greek Language for Arabs (in Arabic)",
+  "scopus": false
+ },
+ {
+  "year": 2015,
+  "authors": "Ahmed Ameen",
+  "title": "Early Christian Architecture (in Arabic)",
+  "venue": "Coptic booklets series (6), Center of Coptic Studies, Bibliotheca Alexandrina (ISBN 978-977-452-314-3)",
+  "pages": "",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Egypt",
+  "evidence": "Architectural survey",
+  "type": "Book",
+  "tags": [
+   "Early Christian",
+   "Coptic",
+   "architecture"
+  ],
+  "key": "Early Christian Architecture (in Arabic)",
+  "scopus": false
+ },
+ {
+  "year": 2013,
+  "authors": "Ahmed Ameen",
+  "title": "Al-Sinnari House",
+  "venue": "Bibliotheca Alexandrina (Arabic ISBN 978-977-452-234-2; English 2014, ISBN 978-977-452-274-4; French 2014, ISBN 978-977-452-268-4)",
+  "pages": "",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Egypt",
+  "evidence": "Architectural survey",
+  "type": "Book",
+  "tags": [
+   "Cairo",
+   "house",
+   "Ottoman"
+  ],
+  "key": "Al-Sinnari House",
+  "scopus": false
+ },
+ {
+  "year": 2010,
+  "authors": "Ahmed Ameen",
+  "title": "Byzantine Influences on the Ottoman Architecture of Greece: The case of the Mosques at Nafpaktos",
+  "venue": "In: ANTAPODOSI, Studies in Byzantine and Post-Byzantine Archaeology and Art in Honor of Professor Helen Deliyianni-Doris, Bibliotheca O.E., Greece (ISBN 978-960-93-2404-5)",
+  "pages": "23–46",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Book chapter",
+  "tags": [
+   "Byzantine",
+   "Ottoman",
+   "Nafpaktos"
+  ],
+  "key": "Byzantine Influences on the Ottoman Architecture of Greece: The case of the Mosques at Nafpaktos",
+  "scopus": false
+ },
+ {
+  "year": 2018,
+  "authors": "Ahmed Ameen",
+  "title": "Ottoman use of the existing public buildings in former Byzantine towns: Greece as case study",
+  "venue": "15th International Congress of Turkish Art, Proceedings (eds. M. Bernardini, A. Taddei), Naples, 16–18 Sept. 2015; Ankara",
+  "pages": "89–107",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Conference paper",
+  "tags": [
+   "Byzantine",
+   "Ottoman",
+   "reuse"
+  ],
+  "key": "Ottoman use of the existing public buildings in former Byzantine towns: Greece as case study",
+  "scopus": false
+ },
+ {
+  "year": 2016,
+  "authors": "Ahmed Ameen",
+  "title": "Islamic Art and Other Arts: The Reaction between Understanding and Practice",
+  "venue": "Third International Conference “Art in Islamic thought”, Part 2, International Institute of Islamic Thought (USA)",
+  "pages": "179–204",
+  "doi": "",
+  "url": "",
+  "theme": "Other",
+  "region": "—",
+  "evidence": "Textual sources",
+  "type": "Conference paper",
+  "tags": [
+   "Islamic art",
+   "theory"
+  ],
+  "key": "Islamic Art and Other Arts: The Reaction between Understanding and Practice",
+  "scopus": false
+ },
+ {
+  "year": 2017,
+  "authors": "Ε. Δωρή; Μ. Μιχαηλίδης; Ν. Κοντογιάννης; Γ. Πάλλης; Γ. Τσιμπούκης; A. Amin; Σ. Αρβανίτη; Ε. Μπαρμπαρίτσα; Κ. Τσάκα; Α. Γεωργίου; Μ. Φωτούχου; Ειρ. Στρατή",
+  "title": "Έρευνα και ανασκαφές στο επάνω κάστρο Άνδρου [Search and excavation at the Epano Kastro, Andros]",
+  "venue": "Mytilene, Greece (in Greek with English summary)",
+  "pages": "",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Excavation",
+  "type": "Report",
+  "tags": [
+   "Andros",
+   "excavation",
+   "castle"
+  ],
+  "key": "Έρευνα και ανασκαφές στο επάνω κάστρο Άνδρου [Search and excavation at the Epano Kastro, Andros]",
+  "scopus": false
+ },
+ {
+  "year": 2015,
+  "authors": "Ahmed Ameen",
+  "title": "Travelers' Works as an Important Source in Studying Archaeology in Light of the ‘Hadji ‘Ali Mosque’ of Athens",
+  "venue": "SHEDET 2",
+  "pages": "6–22",
+  "doi": "",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "Greece/Balkans",
+  "evidence": "Travellers' accounts",
+  "type": "Article",
+  "tags": [
+   "Athens",
+   "mosque",
+   "travellers"
+  ],
+  "key": "Travelers' Works as an Important Source in Studying Archaeology in Light of the ‘Hadji ‘Ali Mosque’ of Athens",
+  "scopus": false
+ },
+ {
+  "year": 2014,
+  "authors": "Mohamed Sayed; Ahmed Ameen; Mervat AbdelHady",
+  "title": "Moving the monuments as an untraditional method for its touristic investment and development: Case study Al-Zahir Baybars Mosque at Cairo",
+  "venue": "Faculty of Tourism and Hotels Journal 8(2), Fayoum University",
+  "pages": "84–99",
+  "doi": "",
+  "url": "",
+  "theme": "Other",
+  "region": "Egypt",
+  "evidence": "Case study",
+  "type": "Article",
+  "tags": [
+   "Cairo",
+   "tourism",
+   "relocation"
+  ],
+  "key": "Moving the monuments as an untraditional method for its touristic investment and development: Case study Al-Zahir Baybars Mosque at Cairo",
+  "scopus": false
+ },
+ {
+  "year": 2014,
+  "authors": "Ahmed Ameen",
+  "title": "Interpretation of the concept of the universality as a characteristic feature of Islamic civilization: the case of the minarets",
+  "venue": "LEPTIS MAGNA, Issue 1, Almergib University (Libya)",
+  "pages": "16–62",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Islamic world",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "minarets",
+   "universality"
+  ],
+  "key": "Interpretation of the concept of the universality as a characteristic feature of Islamic civilization: the case of the minarets",
+  "scopus": false
+ },
+ {
+  "year": 2012,
+  "authors": "Ahmed Ameen",
+  "title": "The meaning of the Arabic dedicatory inscriptions of the Ottoman monuments of Greece",
+  "venue": "Journal of the Faculty of Archaeology, Cairo University 16",
+  "pages": "1–16",
+  "doi": "",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "dedicatory inscriptions",
+   "Ottoman Greece"
+  ],
+  "key": "The meaning of the Arabic dedicatory inscriptions of the Ottoman monuments of Greece",
+  "scopus": false
+ },
+ {
+  "year": 2020,
+  "authors": "Ahmed Ameen",
+  "title": "Midilli Kalesi Kitabeleri",
+  "venue": "Turkology 3, Netherlands",
+  "pages": "26–37",
+  "doi": "",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Other publication",
+  "tags": [
+   "Lesbos",
+   "castle",
+   "inscriptions"
+  ],
+  "key": "Midilli Kalesi Kitabeleri",
+  "scopus": false
+ },
+ {
+  "year": 2020,
+  "authors": "Ahmed Ameen",
+  "title": "Les Inscriptions de la Kastro de Lesbos",
+  "venue": "Turkology 3, Netherlands",
+  "pages": "26–37",
+  "doi": "",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Other publication",
+  "tags": [
+   "Lesbos",
+   "castle",
+   "inscriptions"
+  ],
+  "key": "Les Inscriptions de la Kastro de Lesbos",
+  "scopus": false
+ },
+ {
+  "year": 2020,
+  "authors": "Mehmet Tütüncü; Ahmed Ameen",
+  "title": "Barbaros Hayreddin Paşa’nin Babasi Emir Yakub’a Ait Yeni Bulunan Bir Kitabe (French version: Nouvelle Inscription Découverte Sur Émir Yakub)",
+  "venue": "Turkology 3, Netherlands (Sept. 2020)",
+  "pages": "4–25",
+  "doi": "",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Other publication",
+  "tags": [
+   "Barbarossa",
+   "new inscription",
+   "Lesbos"
+  ],
+  "key": "Barbaros Hayreddin Paşa’nin Babasi Emir Yakub’a Ait Yeni Bulunan Bir Kitabe (French version: Nouvelle Inscription Découverte Sur Émir Yakub)",
+  "scopus": false
+ },
+ {
+  "year": 2019,
+  "authors": "Ahmed Ameen",
+  "title": "Damascene houses",
+  "venue": "Memory of Arabs Magazine, Issue 2, Bibliotheca Alexandrina (April 2019)",
+  "pages": "",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Syria/Levant",
+  "evidence": "Architectural survey",
+  "type": "Magazine article",
+  "tags": [
+   "Damascus",
+   "houses"
+  ],
+  "key": "Damascene houses",
+  "scopus": false
+ },
+ {
+  "year": 2015,
+  "authors": "Ahmed Ameen",
+  "title": "Structures of Mehmed ‘Ali Pasha in Kavala (Greece): Egyptian Waqfs on European Lands",
+  "venue": "Memory of Egypt Magazine, Issue 22, Bibliotheca Alexandrina (July 2015)",
+  "pages": "168–175",
+  "doi": "",
+  "url": "",
+  "theme": "Waqf",
+  "region": "Greece/Balkans",
+  "evidence": "Archival/waqf",
+  "type": "Magazine article",
+  "tags": [
+   "Kavala",
+   "Mehmed Ali",
+   "waqf"
+  ],
+  "key": "Structures of Mehmed ‘Ali Pasha in Kavala (Greece): Egyptian Waqfs on European Lands",
+  "scopus": false
+ },
+ {
+  "year": 2007,
+  "authors": "Ahmed Ameen",
+  "title": "Exchanged influences between Islamic and Byzantine archaeology (in Greek)",
+  "venue": "λυχνάρι (Lychnari) Vol. 4, Greece (Oct.–Nov. 2007)",
+  "pages": "4–5",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Magazine article",
+  "tags": [
+   "public outreach",
+   "Greek"
+  ],
+  "key": "Exchanged influences between Islamic and Byzantine archaeology (in Greek)",
+  "scopus": false
+ },
+ {
+  "year": 2007,
+  "authors": "Ahmed Ameen",
+  "title": "The evolution of Islamic architecture from its appearance in the Arab world until its spread in Europe (in Greek)",
+  "venue": "λυχνάρι (Lychnari) Vol. 5, Greece (Dec. 2007–Jan. 2008)",
+  "pages": "6–8",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Magazine article",
+  "tags": [
+   "public outreach",
+   "Greek"
+  ],
+  "key": "The evolution of Islamic architecture from its appearance in the Arab world until its spread in Europe (in Greek)",
+  "scopus": false
+ },
+ {
+  "year": 2008,
+  "authors": "Ahmed Ameen",
+  "title": "The first examples of Islamic architecture in Europe (in Greek)",
+  "venue": "λυχνάρι (Lychnari) Vol. 6, Greece (Apr.–May 2008)",
+  "pages": "6–7",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Magazine article",
+  "tags": [
+   "public outreach",
+   "Greek"
+  ],
+  "key": "The first examples of Islamic architecture in Europe (in Greek)",
+  "scopus": false
+ },
+ {
+  "year": 2008,
+  "authors": "Ahmed Ameen",
+  "title": "Ottoman architecture of Greece: part 1 (in Greek)",
+  "venue": "λυχνάρι (Lychnari) Vol. 7, Greece (June–July 2008)",
+  "pages": "6–8",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Magazine article",
+  "tags": [
+   "public outreach",
+   "Greek"
+  ],
+  "key": "Ottoman architecture of Greece: part 1 (in Greek)",
+  "scopus": false
+ },
+ {
+  "year": 2008,
+  "authors": "Ahmed Ameen",
+  "title": "Ottoman architecture of Greece: part 2 (in Greek)",
+  "venue": "λυχνάρι (Lychnari) Vol. 8, Greece (Aug. 2008)",
+  "pages": "6–8",
+  "doi": "",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Magazine article",
+  "tags": [
+   "public outreach",
+   "Greek"
+  ],
+  "key": "Ottoman architecture of Greece: part 2 (in Greek)",
+  "scopus": false
  }
 ];
 
@@ -835,6 +1707,96 @@
   "c": "reconsidering who built Ottoman mosques in Greece, via the Ierapetra Mosque on Crete.",
   "m": "Reading patronage through inscriptions and buildings together.",
   "q": "How did patronage differ between Crete and the mainland?"
+ },
+ "Islamic Epigraphic Heritage of the Ottoman Balkans: The Case of Didymoteicho (Greece)": {
+  "c": "the Islamic epigraphic heritage of Didymoteicho, a key Ottoman Balkan town (accepted, Abgadiyat; Scopus-indexed per CV).",
+  "m": "Site-based epigraphic recording within an Ottoman Balkan setting.",
+  "q": "How does Didymoteicho’s epigraphy compare with other Balkan towns?"
+ },
+ "10.5281/zenodo.21247890": {
+  "c": "a historical source on the Arabian Peninsula and Persia between 1622 and 1810.",
+  "m": "Source-critical reading of a Gulf historical compendium.",
+  "q": "What does this compendium add to Gulf history before the modern state?"
+ },
+ "10.5281/zenodo.122.12658": {
+  "c": "how tourism law shapes ethical and environmental practice.",
+  "m": "Evaluating legislation against destination outcomes.",
+  "q": "Which legal mechanisms most improve environmental stewardship?"
+ },
+ "https://qalampk.nl/index.php/ojs_files/article/view/2": {
+  "c": "a synthesis of the architectural and epigraphic legacy of Ottoman Greece.",
+  "m": "Combining buildings and inscriptions in one overview.",
+  "q": "Which inscription-and-building pairs best represent Ottoman Greece?"
+ },
+ "10.21608/ince.2026.448237.1037": {
+  "c": "using Ilkhanid mints to study urban transformation in Iranian cities.",
+  "m": "Reading mint data as evidence for urban change.",
+  "q": "Do mint distributions track urban growth or decline under the Ilkhanids?"
+ },
+ "10.21608/JARCH.2024.333288": {
+  "c": "how collective waqf funded Ottoman mosques and medreses in Greece in the 19th and early 20th centuries.",
+  "m": "An archival and civilizational study of waqf finance.",
+  "q": "How did collective waqf sustain religious institutions as Ottoman rule ended?"
+ },
+ "10.21608/JATMUST.2023.284702": {
+  "c": "Evliyâ Çelebi’s method of documenting Athens and its buildings.",
+  "m": "Evaluating a traveller’s account against surviving monuments.",
+  "q": "How reliable is Evliyâ Çelebi as a source for Ottoman Athens?"
+ },
+ "10.21608/JATMUST.2022.253381": {
+  "c": "the origin and functional context of the twin-basilica church type.",
+  "m": "Tracing a building type to its origin and use.",
+  "q": "What function explains the twin-basilica plan?"
+ },
+ "10.21608/MJAF.2020.25255.1534": {
+  "c": "Ottoman waqf–medreses in Greece, read through archival documents and architecture, including the foundation inscriptions of Osman Efendi (Athens) and Haci Mehmed Bey (Mytilene).",
+  "m": "Cross-reading waqf documents, inscriptions and buildings.",
+  "q": "What do waqfiyyas reveal about staff, salaries and daily scholastic life?"
+ },
+ "https://lupinepublishers.com/anthropological-and-archaeological-sciences/fulltext/towards-a-corpus-of-the-inscriptions-of-ottoman-buildings-in-greece.ID.000107.php": {
+  "c": "the starting point for a corpus of inscriptions on Ottoman buildings in Greece.",
+  "m": "Building an inscription corpus as a research infrastructure.",
+  "q": "How can the corpus be extended into a searchable open dataset?"
+ },
+ "10.21608/abidus.2019.223391": {
+  "c": "why Mamlūk ranks were displayed and how they affected the visual field.",
+  "m": "Linking titles and ranks to their visual effect.",
+  "q": "How did rank display change across Mamlūk monuments?"
+ },
+ "10.21608/abgad.2019.140483": {
+  "c": "bilingual and trilingual inscriptions as evidence for the late Ottoman period in Greece.",
+  "m": "Using multilingual inscriptions as historical sources.",
+  "q": "What does language choice reveal about audience and identity?"
+ },
+ "10.2143/TURC.47.0.3164942": {
+  "c": "the Küçük Cami of Athens re-read in light of travellers’ accounts.",
+  "m": "Triangulating a lost or altered monument through travellers’ works.",
+  "q": "How can travellers’ accounts recover other altered Ottoman buildings?"
+ },
+ "10.36816/shedet.003.07": {
+  "c": "Ottoman-period domestic architecture in Ghadames (Da Babanei House).",
+  "m": "A house-level case study of vernacular architecture.",
+  "q": "What shaped Ghadames houses: climate, society or Ottoman influence?"
+ },
+ "10.36816/shedet.001.02": {
+  "c": "documentation of the Mehmet Khalil Agha Mosque in the Greek city of Drama.",
+  "m": "Documenting a monument in its current state.",
+  "q": "What conservation steps would best protect Ottoman monuments in Drama?"
+ },
+ "10.21608/jguaa.2013.2994": {
+  "c": "an archaeological and conservation study of Dekhaila’s dry-deck.",
+  "m": "Combining archaeological recording with conservation assessment.",
+  "q": "How should industrial-maritime heritage be conserved?"
+ },
+ "10.21608/abgad.2011.58283": {
+  "c": "inscriptions in Ottoman residential architecture of Damascus.",
+  "m": "Epigraphy applied to domestic buildings.",
+  "q": "What do house inscriptions reveal about owners and aesthetics?"
+ },
+ "https://bibalex.org/IslamicCivilization/en/Publication/PublicationDetails.aspx?Id=2014": {
+  "c": "a catalogue of the mosque heritage of Greece, a country with roughly 300 Islamic antiquities.",
+  "m": "A catalogue-based approach to a national mosque corpus.",
+  "q": "Which mosque types in Greece are most at risk?"
  }
 };
 
@@ -972,7 +1934,7 @@
         const ris = toRIS(p);
 
         const el = document.createElement("div");
-        el.className = "pub";
+        el.className = "pub"; el.dataset.theme = p.theme||"";
         el.innerHTML = `
           <div class="pubTop">
             <div>
@@ -980,7 +1942,7 @@
               <p class="pubMeta">${p.authors}<br><span>${p.venue}${p.pages?` — ${p.pages}`:""}</span> • <span>${p.year||""}</span><br>
                 ${p.doi?`DOI: <a href="${lnk(p)}" target="_blank" rel="noopener">${p.doi}</a>`:(p.url?`<a href="${lnk(p)}" target="_blank" rel="noopener">Link</a>`:"")}
               </p>
-              <p class="pubMeta">${[p.scopus?"Scopus":"",p.type,p.region,p.evidence].filter(v=>v&&v!=="—").map(v=>`<span class="pill" style="padding:3px 8px;font-size:12px;opacity:.85">${v}</span>`).join(" ")}</p>
+              <p class="pubMeta"><span class="pill ${p.scopus?"tagSc":"tagNon"}">${p.scopus?"Scopus":"Non-Scopus"}</span> ${[p.type,p.region,p.evidence].filter(v=>v&&v!=="—").map(v=>`<span class="pill sm">${v}</span>`).join(" ")}</p>
               <p class="pubMeta">${t.tags}: ${(p.tags||[]).map(tag=>`<span class="pill" style="padding:4px 8px;font-size:12px">${tag}</span>`).join(" ")}</p>
               ${CITE[p.key]?`<details class="why"><summary>${t.why_btn}</summary>
                 <p><b>${t.lbl_cite}:</b> ${CITE[p.key].c}</p>
@@ -1073,6 +2035,9 @@
       const theme = window.__theme || "All";
 
       let list = PUBS;
+      const ix = window.__idx || "Scopus";
+      if(ix === "Scopus") list = list.filter(p => p.scopus);
+      else if(ix === "Other") list = list.filter(p => !p.scopus);
       if(theme !== "All") list = list.filter(p => (p.theme||"") === theme);
       const fr=document.getElementById("fRegion").value, fe=document.getElementById("fEvidence").value, ft=document.getElementById("fType").value;
       if(fr) list = list.filter(p => p.region===fr);
@@ -1084,9 +2049,10 @@
 
     function buildStats(){
       const t = I18N[window.__lang || "en"];
-      const chip=(n,l)=>`<div class="stat"><b>${n}</b>${l}</div>`;
+      const chip=(n,l,c)=>`<div class="stat ${c}"><b>${n}</b>${l}</div>`;
+      const nSc=PUBS.filter(p=>p.scopus).length;
       document.getElementById("stats").innerHTML =
-        chip(PUBS.length,t.st_pubs)+chip(28,t.st_sc)+chip(72,t.st_gs)+`<div class="stat" style="flex-basis:100%;border:none;padding:0;font-size:12px">${t.st_note}</div>`;
+        chip(nSc,t.st_pubs,"c1")+chip(PUBS.length-nSc,t.st_other,"c2")+chip(36,t.st_sc,"c3")+chip(82,t.st_gs,"c4")+`<div class="stat note">${t.st_note}</div>`;
     }
 
     function buildFacets(){
@@ -1111,6 +2077,9 @@
     
 
     // Theme filter buttons
+    [["ixSc","Scopus"],["ixNon","Other"],["ixAll","All"]].forEach(([id,v])=>document.getElementById(id).addEventListener("click",()=>{
+      window.__idx=v; [["ixSc","Scopus"],["ixNon","Other"],["ixAll","All"]].forEach(([i,x])=>document.getElementById(i).classList.toggle("active",x===v)); applyFilters();
+    }));
     document.getElementById("thAll").addEventListener("click", ()=>setTheme("All"));
     document.getElementById("thArch").addEventListener("click", ()=>setTheme("Architecture"));
     document.getElementById("thEpi").addEventListener("click", ()=>setTheme("Epigraphy"));
