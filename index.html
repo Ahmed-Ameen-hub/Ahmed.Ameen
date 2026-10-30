@@ -68,7 +68,20 @@
     .toast{position:fixed; left:50%; bottom:18px; transform:translateX(-50%); background:rgba(10,16,35,.92); border:1px solid var(--line); padding:10px 12px;border-radius:14px; display:none; max-width:min(720px,92vw)}
     .toast strong{color:var(--accent)}
 
+    .stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+    .stat{border:1px solid var(--line);background:rgba(255,255,255,.04);border-radius:14px;padding:8px 12px;font-size:13px;color:var(--muted)}
+    .stat b{display:block;font-size:18px;color:var(--accent)}
+    .whyList{margin:10px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .whyList li{border:1px solid var(--line);background:rgba(255,255,255,.03);border-radius:14px;padding:12px;color:var(--muted);line-height:1.6;font-size:14px}
+    .whyList li b{color:var(--text)}
+    details.why{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+    details.why summary{cursor:pointer;color:var(--accent);font-size:13px}
+    details.why p{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.6}
+    details.why p b{color:var(--text)}
+    .facets select{background:rgba(255,255,255,.06);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:8px 10px;font-size:13px}
+    .facets select option{color:#111}
     @media (max-width:860px){
+      .whyList{grid-template-columns:1fr}
       .themes{grid-template-columns:1fr}
       .aboutGrid{grid-template-columns:1fr}
     }
@@ -100,6 +113,7 @@
 
       <div class="actions">
         <a class="btn" href="#about" data-i18n="nav_about">About</a>
+        <a class="btn" href="#whycite" data-i18n="nav_why">Why Cite</a>
         <a class="btn" href="#themes" data-i18n="nav_themes">Research Themes</a>
         <a class="btn" href="#publications" data-i18n="nav_pubs">Publications</a>
         <button class="btn primary" id="downloadBib" type="button" data-i18n="btn_bib_all">Download BibTeX (.bib)</button>
@@ -116,6 +130,11 @@
             <p data-i18n="about_text">
               I work at the intersection of Islamic/Ottoman architectural history, epigraphy, and evidence-based heritage studies. My recent work also engages heritage science through multi-analytical study of manuscript materials.
             </p>
+            <p style="margin-top:10px"><b data-i18n="role">Professor, History and Islamic Civilization, University of Sharjah (UAE)</b></p>
+            <p style="margin-top:10px" data-i18n="about_text2">
+              My research documents and interprets Ottoman monuments and their inscriptions in Greece and the Balkans, and extends to Ayyubid madrasas in Cairo, Qur’anic epigraphy in Quanzhou, the UAE’s Islamic heritage, and the material analysis of Islamic–African manuscripts. I hold a PhD in Islamic Archaeology (University of Athens, 2010) and have served as Editor-in-Chief of <em>SHEDET</em>, a Scopus-indexed journal. My book <em>Islamic Architecture in Greece: Mosques</em> (Bibliotheca Alexandrina, 2017) catalogues the mosque heritage of a country with roughly 300 Islamic antiquities.
+            </p>
+            <div class="stats" id="stats"></div>
           </div>
           <div class="box">
             <h3 data-i18n="about_links">Profiles</h3>
@@ -125,6 +144,23 @@
             </p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="grid" id="whycite">
+      <div class="card">
+        <h2 data-i18n="why_title">Why cite this work?</h2>
+        <p data-i18n="why_intro">If your own research touches any of the situations below, one of these papers offers a ready evidence base, method or open question you can build on. Each publication below has a “Why cite this?” note.</p>
+        <ul class="whyList">
+          <li data-i18n="q1">Are you describing Ottoman mosques, markets or madrasas in Greece or the Balkans? Start from the documented corpus, typologies and patronage studies here.</li>
+          <li data-i18n="q2">Are you reading a foundation or dedicatory inscription? See how inscriptions were used to re-date, re-attribute and reinterpret monuments.</li>
+          <li data-i18n="q3">Does colour affect how an inscription is seen and read? The Didymóteichon study offers a case and a framework for visual impact.</li>
+          <li data-i18n="q4">Are you mapping waqf institutions or madrasas in Ayyubid Cairo? Use the site-based analytical approach and the documentary evidence.</li>
+          <li data-i18n="q5">Are you studying amulets, talismans or paper manuscripts? See a multi-technique workflow (imaging, FTIR, Raman, LIBS, LIF) applied to Islamic–African collections.</li>
+          <li data-i18n="q7">Are you using travellers’ accounts such as Evliyâ Çelebi to study a lost or altered monument? See how they are tested against surviving buildings.</li>
+          <li data-i18n="q8">Are you working with Islamic coins, chronicles or manuscript certificates as historical sources? See the source-critical approaches applied to them.</li>
+          <li data-i18n="q6">Do you need a precedent for linking text, patron and architecture? Several papers show how epigraphy, waqf and building evidence reinforce one another.</li>
+        </ul>
       </div>
     </section>
 
@@ -177,19 +213,18 @@
               <button class="seg" id="thEpi" type="button">Epigraphy</button>
               <button class="seg" id="thWaqf" type="button">Waqf</button>
               <button class="seg" id="thHS" type="button">Heritage Science</button>
+              <button class="seg" id="thHist" type="button">History &amp; Sources</button>
             </div>
           </div>
           <div class="search">
             <input id="q" type="search" placeholder="Search title / keywords / venue…" aria-label="Search publications" />
           </div>
         </div>
-        <div class="pubsHeader">
-          <h2 style="margin:0" data-i18n="pubs_title">Publications (DOI + Cite this work)</h2>
-          <div class="search">
-            <input id="q" type="search" placeholder="Search title / keywords / venue…" aria-label="Search publications" />
-          </div>
+        <div class="facets" id="facets" style="display:flex;gap:10px;flex-wrap:wrap;margin:0 0 12px">
+          <select id="fRegion" aria-label="Region"></select>
+          <select id="fEvidence" aria-label="Evidence type"></select>
+          <select id="fType" aria-label="Document type"></select>
         </div>
-
         <div id="pubList"></div>
 
         <footer data-i18n="footer_tip">
@@ -228,6 +263,7 @@
         pill_waqf: "Waqf & Madrasas",
         pill_hs: "Heritage Science",
         nav_about: "About",
+        nav_why: "Why Cite",
         nav_themes: "Research Themes",
         nav_pubs: "Publications",
         btn_bib_all: "Download BibTeX (.bib)",
@@ -235,6 +271,20 @@
         about_title: "About",
         about_sub: "Short bio",
         about_text: "I work at the intersection of Islamic/Ottoman architectural history, epigraphy, and evidence-based heritage studies. My recent work also engages heritage science through multi-analytical study of manuscript materials.",
+        role: "Professor, History and Islamic Civilization, University of Sharjah (UAE)",
+        about_text2: "My research documents and interprets Ottoman monuments and their inscriptions in Greece and the Balkans, and extends to Ayyubid madrasas in Cairo, Qur’anic epigraphy in Quanzhou, the UAE’s Islamic heritage, and the material analysis of Islamic–African manuscripts. I hold a PhD in Islamic Archaeology (University of Athens, 2010) and have served as Editor-in-Chief of SHEDET, a Scopus-indexed journal. My book Islamic Architecture in Greece: Mosques (Bibliotheca Alexandrina, 2017) catalogues the mosque heritage of a country with roughly 300 Islamic antiquities.",
+        why_title: "Why cite this work?",
+        why_intro: "If your own research touches any of the situations below, one of these papers offers a ready evidence base, method or open question you can build on. Each publication below has a “Why cite this?” note.",
+        q1: "Are you describing Ottoman mosques, markets or madrasas in Greece or the Balkans? Start from the documented corpus, typologies and patronage studies here.",
+        q2: "Are you reading a foundation or dedicatory inscription? See how inscriptions were used to re-date, re-attribute and reinterpret monuments.",
+        q3: "Does colour affect how an inscription is seen and read? The Didymóteichon study offers a case and a framework for visual impact.",
+        q4: "Are you mapping waqf institutions or madrasas in Ayyubid Cairo? Use the site-based analytical approach and the documentary evidence.",
+        q5: "Are you studying amulets, talismans or paper manuscripts? See a multi-technique workflow (imaging, FTIR, Raman, LIBS, LIF) applied to Islamic–African collections.",
+        q6: "Do you need a precedent for linking text, patron and architecture? Several papers show how epigraphy, waqf and building evidence reinforce one another.",
+        q7: "Are you using travellers’ accounts such as Evliyâ Çelebi to study a lost or altered monument? See how they are tested against surviving buildings.",
+        q8: "Are you working with Islamic coins, chronicles or manuscript certificates as historical sources? See the source-critical approaches applied to them.",
+        why_btn: "Why cite this?", lbl_cite: "Cite for", lbl_method: "Reusable method", lbl_q: "Open question it raises",
+        st_pubs: "listed below", st_art: "articles", st_books: "books", st_sc: "Scopus citations (h 4)", st_gs: "Google Scholar citations (h 5)", st_note: "Totals as reported in the CV (Sep 2026); please verify against Scopus and Google Scholar before citing.",
         about_links: "Profiles",
         about_hint: "Tip: keep your author identifiers consistent (name + affiliation + ORCID) to reduce citation splitting.",
         themes_title: "Research themes",
@@ -272,6 +322,7 @@
         pill_waqf: "الوقف والمدارس",
         pill_hs: "علوم التراث",
         nav_about: "نبذة",
+        nav_why: "لماذا الاستشهاد",
         nav_themes: "محاور البحث",
         nav_pubs: "المقالات",
         btn_bib_all: "تنزيل BibTeX (.bib)",
@@ -279,6 +330,20 @@
         about_title: "نبذة",
         about_sub: "نبذة مختصرة",
         about_text: "أعمل في تقاطع تاريخ العمارة الإسلامية/العثمانية مع الإبجرافيا والدراسات التراثية المبنية على الدليل. كما يتقاطع عملي الحديث مع علوم التراث عبر التحليل متعدد الأدوات لمواد المخطوطات.",
+        about_text2: "يوثّق بحثي المنشآت العثمانية ونقوشها في اليونان والبلقان ويفسّرها، ويمتد إلى المدارس الأيوبية في القاهرة، والنقوش القرآنية في تشيوانتشو، والتراث الإسلامي في الإمارات، والتحليل المادي للمخطوطات الإسلامية–الأفريقية. وحصلت على الدكتوراه في الآثار الإسلامية (جامعة أثينا، 2010)، وترأست تحرير مجلة «شدت» المفهرسة في سكوبس. ويضم كتابي «العمارة الإسلامية في اليونان: المساجد» (مكتبة الإسكندرية، 2017) مساجد بلد يضم نحو 300 أثر إسلامي.",
+        role: "أستاذ التاريخ والحضارة الإسلامية، جامعة الشارقة (الإمارات)",
+        why_title: "لماذا تستشهد بهذه الأعمال؟",
+        why_intro: "إذا كان بحثك يتقاطع مع أي من الحالات التالية، ففي هذه الأعمال مادة موثقة أو منهج أو سؤال بحثي مفتوح يمكنك البناء عليه. ولكل منشور أدناه ملاحظة «لماذا الاستشهاد؟».",
+        q1: "هل تصف مساجد أو أسواقًا أو مدارس عثمانية في اليونان أو البلقان؟ ابدأ من المدوّنة الموثقة والتصنيفات ودراسات الرعاية هنا.",
+        q2: "هل تقرأ نقش تأسيس أو إنشاء؟ انظر كيف استُخدمت النقوش لإعادة التأريخ والنسبة والتفسير.",
+        q3: "هل يؤثر اللون في رؤية النقش وقراءته؟ تقدّم دراسة ديديموتيخو حالة وإطارًا للأثر البصري.",
+        q4: "هل ترسم خريطة لمؤسسات الوقف أو المدارس في القاهرة الأيوبية؟ استخدم المنهج التحليلي القائم على المواقع والأدلة الوثائقية.",
+        q5: "هل تدرس التمائم أو المخطوطات الورقية؟ انظر سير عمل متعدد التقنيات (تصوير، FTIR، رامان، LIBS، LIF) طُبّق على مجموعات إسلامية–أفريقية.",
+        q6: "هل تحتاج سابقة تربط النص بالراعي والعمارة؟ تبيّن أعمال عدة كيف تتعاضد النقوش والوقف والدليل المعماري.",
+        q7: "هل تستعين بكتابات الرحالة مثل أوليا جلبي لدراسة منشأة مفقودة أو متغيرة؟ انظر كيف اختُبرت أمام المباني الباقية.",
+        q8: "هل تعمل على العملات الإسلامية أو الحوليات أو شهادات السماع في المخطوطات كمصادر تاريخية؟ انظر مناهج نقد المصادر المطبقة عليها.",
+        why_btn: "لماذا الاستشهاد؟", lbl_cite: "استشهد به في", lbl_method: "منهج قابل لإعادة الاستخدام", lbl_q: "سؤال بحثي مفتوح",
+        st_pubs: "مدرجة أدناه", st_art: "مقالًا", st_books: "كتب", st_sc: "استشهادات سكوبس (h 4)", st_gs: "استشهادات جوجل سكولار (h 5)", st_note: "الأرقام كما وردت في السيرة الذاتية (سبتمبر 2026)؛ يُرجى التحقق منها في سكوبس وجوجل سكولار.",
         about_links: "الملفات التعريفية",
         about_hint: "نصيحة: حافظ على اتساق اسم الباحث/الانتماء/ORCID لتقليل تشتت الاستشهادات بين ملفات مختلفة.",
         themes_title: "محاور البحث",
@@ -312,146 +377,895 @@
 
     // ====== 3) PUBLICATIONS DATA ======
     const PUBS = [
-      {
-        year: 2026,
-        authors: "Ahmed Ameen; Issam Okleh; Nagwa Zouair; Maher Al-shamaileh; Mhran Alzo'ubi; Mahmoud Al Rwaidi",
-        title: "Architectural and Cultural Significance of the Al-Bidyah Mosque: An Exploration of Islamic Heritage in the UAE",
-        venue: "SHEDET 15(1)",
-        pages: "61–81",
-        doi: "10.21608/shedet.2025.398380.1309",
-        theme: "Architecture",
-        tags: ["UAE", "mosque", "heritage", "architecture"],
-      },
-      {
-        year: 2026,
-        authors: "Mohamed Hisham; Ahmed Ameen; Hamada Hagras",
-        title: "SITES OF THE INDEPENDENT MADRASAS IN CAIRO FROM SALAH AL-DIN REIGN TO THE AYYUBID DYNASTY'S END: AN INDUCTIVE AND ANALYTICAL STUDY",
-        venue: "Journal of the General Union of Arab Archaeologists, 11(1)",
-        pages: "238–262",
-        doi: "10.21608/jguaa2.2025.318362.1214",
-        theme: "Waqf",
-        tags: ["Cairo", "madrasas", "Ayyubid", "urban history"],
-      },
-      {
-        year: 2025,
-        authors: "Abdelrazek Elnaggar; Hend Mahgoub; Laura Maestro-Guijarro; Ana Crespo Ibáñez; Paula María Carmona-Quiroga; Santiago Sánchez-Cortés; Žiga Rehar; Gregor Kos; Ahmed Ameen; Marko Frelih; Matija Strlič; Mohamed Oujja; Marta Castillejo",
-        title: "Multianalytical Study of Amuletic and Talismanic Islamic-African Paper Manuscripts in the Slovene Ethnographic Museum",
-        venue: "ChemPlusChem",
-        pages: "",
-        doi: "10.1002/cplu.202500433",
-        theme: "Heritage Science",
-        tags: ["heritage science", "manuscripts", "paper", "spectroscopy"],
-      },
-      {
-        year: 2025,
-        authors: "Ahmed Ameen; Yassmin Youssef Kasem",
-        title: "The Visual Impact of Colors in Ottoman Inscriptions: A Case Study of the Sultan Bayezid II Mosque in Didymóteichon, Greece",
-        venue: "Journal of Islamic Architecture 8(4)",
-        pages: "",
-        doi: "10.18860/jia.v8i4.27523",
-        theme: "Epigraphy",
-        tags: ["Ottoman", "epigraphy", "color", "Greece"],
-      },
-      {
-        year: 2025,
-        authors: "Ahmed Ameen; Hamada Hagras",
-        title: "Textual Embodiments of the Sacred: Analyzing the Qur’anic Inscriptions in Al-Aṣḥāb Mosque of Quanzhou-China",
-        venue: "SHEDET 14",
-        pages: "125–143",
-        doi: "10.21608/shedet.2025.352617.1283",
-        theme: "Epigraphy",
-        tags: ["Qur’anic inscriptions", "China", "mosque", "textuality"],
-      },
-      {
-        year: 2024,
-        authors: "Mohamed Abd al-Sattār Uthmān; Ahmed Ameen",
-        title: "Iwān El-Ser at Al-Malik Al-Şāleḥ Najm Al-Dīn Ayyūb Complex in Cairo: Reconsidered Based on Its Foundation Inscription",
-        venue: "SHEDET 12",
-        pages: "1–9",
-        doi: "10.21608/SHEDET.2024.332846",
-        theme: "Waqf",
-        tags: ["Cairo", "foundation inscription", "Ayyubid", "architecture"],
-      },
-      {
-        year: 2022,
-        authors: "Atef Mansour Ramadan; Ahmed Ameen",
-        title: "The Credibility of Religious Quotes on Islamic Numismatics Considering Its Actual Historical Context: The Case of Ṭarmashīrīn Khan",
-        venue: "SHEDET 9",
-        pages: "234–245",
-        doi: "10.21608/SHEDET.2022.248913",
-        theme: "Heritage Science",
-        tags: ["numismatics", "source criticism", "Central Asia"],
-      },
-      {
-        year: 2020,
-        authors: "Mohammed S. Tawfiq; Almudena Ariza Armada; Atef Mansour Mohammad; Ahmed Ameen; Mervat Abd El-Hady Abd El-Latif",
-        title: "A Historical and Numismatic study of the Dinars of the Sultan Maḥmūd b. Sabuktakīn at Nishapur",
-        venue: "Espacio, Tiempo y Forma. III. Historia Medieval 33",
-        pages: "613–652",
-        doi: "10.5944/etfiii.33.2020.24006",
-        theme: "Heritage Science",
-        tags: ["numismatics", "Nishapur", "Ghaznavid"],
-      },
-      {
-        year: 2020,
-        authors: "Ahmed Ameen",
-        title: "The Ottoman bedestens in Greece",
-        venue: "SHEDET 7",
-        pages: "",
-        doi: "10.36816/SHEDET.2020.32863.1021",
-        theme: "Architecture",
-        tags: ["Ottoman", "bedesten", "Greece", "commercial architecture"],
-      },
-      {
-        year: 2020,
-        authors: "Ahmed Ameen",
-        title: "The significance of the Qur’anic quotation ‘Mā shā' Allāh’ on both Ottoman and Greek heritages in the Balkans",
-        venue: "EJARS 10(1)",
-        pages: "73–85",
-        doi: "10.21608/EJARS.2020.98963",
-        theme: "Epigraphy",
-        tags: ["Balkans", "inscriptions", "shared heritage"],
-      },
-      {
-        year: 2019,
-        authors: "Ahmed Ameen",
-        title: "The Ottoman architecture in Greece then and now: Quantitative approach",
-        venue: "SHEDET 6",
-        pages: "93–115",
-        doi: "10.36816/shedet.006.06",
-        theme: "Architecture",
-        tags: ["quantitative", "Ottoman", "Greece", "heritage"],
-      },
-      {
-        year: 2019,
-        authors: "Ahmed Ameen",
-        title: "Patrons of Ottoman Mosques in Greece reconsidered in light of the Ierapetra Mosque of Crete",
-        venue: "Journal of Islamic Architecture 5(3)",
-        pages: "137–144",
-        doi: "10.18860/jia.v5i3.5365",
-        theme: "Waqf",
-        tags: ["patronage", "mosques", "Greece", "Crete"],
-      },
-      {
-        year: 2019,
-        authors: "Ahmed Ameen",
-        title: "Bilingual and trilingual inscriptions of the Ottoman buildings in Greece: a search for the history of late ottoman period",
-        venue: "Abgadiyat 14",
-        pages: "208–243",
-        doi: "10.21608/abgad.2019.140483",
-        theme: "Epigraphy",
-        tags: ["multilingual", "epigraphy", "Greece", "Ottoman"],
-      },
-    ];
+ {
+  "year": 2026,
+  "authors": "Saleh M. Z. Mahmood Al-Leheabi; Ahmed Ameen",
+  "title": "Certificates of Audition (Samāʿāt) in Islamic Manuscripts: Documentary Practices, Transmission Networks, and Historiographical Value",
+  "venue": "Journal of Islamic Thought and Civilization 16(2)",
+  "pages": "",
+  "doi": "10.32350/jitc.162.02",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "Islamic world",
+  "evidence": "Manuscripts",
+  "type": "Article",
+  "tags": [
+   "samāʿāt",
+   "manuscripts",
+   "transmission"
+  ],
+  "key": "10.32350/jitc.162.02"
+ },
+ {
+  "year": 2026,
+  "authors": "Ahmed Ameen; Farag El-Hussiny; Nadjib Benkheira",
+  "title": "Islamic Epigraphic Heritage of the Ottoman Balkans: The Case of Didymoteicho (Greece)",
+  "venue": "Abgadiyat 21 (2027), accepted",
+  "pages": "",
+  "doi": "",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Ottoman",
+   "epigraphy",
+   "Didymoteicho"
+  ],
+  "key": "Islamic Epigraphic Heritage of the Ottoman Balkans: The Case of Didymoteicho (Greece)"
+ },
+ {
+  "year": 2026,
+  "authors": "Ahmed Ameen; Hamada Hagras",
+  "title": "Do the Planfication Characteristics Help in Decoding the Patronage and Chronology of the Zincirli Mosque in Greek Serres?",
+  "venue": "Egyptian Journal of Archaeological and Restoration Studies 16(1)",
+  "pages": "135–141",
+  "doi": "10.21608/ejars.2026.511057",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "Serres",
+   "plan",
+   "patronage",
+   "chronology"
+  ],
+  "key": "10.21608/ejars.2026.511057"
+ },
+ {
+  "year": 2026,
+  "authors": "Ahmed Ameen",
+  "title": "The Compendium of the Histories of the Arabian Peninsula and Persia, 1622–1810 CE: A Landmark in Gulf",
+  "venue": "Qalamos Heritage Studies 2(1)",
+  "pages": "87–97",
+  "doi": "10.5281/zenodo.21247890",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "UAE/Gulf",
+  "evidence": "Textual sources",
+  "type": "Article",
+  "tags": [
+   "Gulf",
+   "historiography",
+   "manuscript"
+  ],
+  "key": "10.5281/zenodo.21247890"
+ },
+ {
+  "year": 2026,
+  "authors": "Maher Odeh Falah Alshamaileh; Lama'A Al-Orainat; Hassan Ali Al-Ababneh; Fatin A. Elhaj; Ahmed Ameen; Mhran Alzoubi; Ahmed Farhan Al-Amayreh",
+  "title": "Service Robotics for Automated Tourist Assistance in Smart Destinations",
+  "venue": "Proc. IEEE IC_ASET 2026, Hammamet-Yasmine",
+  "pages": "",
+  "doi": "10.1109/IC_ASET69920.2026.11502384",
+  "url": "",
+  "theme": "Other",
+  "region": "—",
+  "evidence": "Technology",
+  "type": "Conference paper",
+  "tags": [
+   "robotics",
+   "tourism",
+   "smart destinations"
+  ],
+  "key": "10.1109/IC_ASET69920.2026.11502384"
+ },
+ {
+  "year": 2026,
+  "authors": "Sherif Ashraf; Ahmed Ameen; Hamada Hagras",
+  "title": "Architectural Styles of the Hanging Mosques in Ottoman-Era Alexandria: An Interdisciplinary Analysis",
+  "venue": "Journal of the General Union of Arab Archaeologists 11(2)",
+  "pages": "250–266",
+  "doi": "10.21608/jguaa2.2025.318368.1215",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Egypt",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "Alexandria",
+   "hanging mosques",
+   "Ottoman"
+  ],
+  "key": "10.21608/jguaa2.2025.318368.1215"
+ },
+ {
+  "year": 2026,
+  "authors": "Ahmed Attia Ghazy; Mohamed Abdelwahab; Ahmed Ameen",
+  "title": "An Archaeological and Documentary Study of the Franciscan Sisters' School of the Immaculate Conception in Al-Sabtīyya, Cairo",
+  "venue": "Journal of the General Union of Arab Archaeologists 11(2)",
+  "pages": "214–232",
+  "doi": "10.21608/jguaa2.2026.345733.1245",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Egypt",
+  "evidence": "Archival/waqf",
+  "type": "Article",
+  "tags": [
+   "Cairo",
+   "school",
+   "documentary study"
+  ],
+  "key": "10.21608/jguaa2.2026.345733.1245"
+ },
+ {
+  "year": 2026,
+  "authors": "Issam Okleh; Nagwa Zouair; Mahran Al Zoubi; Ahmed Ameen",
+  "title": "The Book ʿUyūn Al-Tawārīkh (Choice Accounts of History) by Ibn Al-Sābīʾ: Valuable Insights into the Early Seljuq Period",
+  "venue": "Journal of Islamic Thought and Civilization 16(1)",
+  "pages": "37–52",
+  "doi": "10.32350/jitc.161.03",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "Middle East",
+  "evidence": "Textual sources",
+  "type": "Article",
+  "tags": [
+   "Seljuq",
+   "historiography",
+   "Ibn al-Sābī"
+  ],
+  "key": "10.32350/jitc.161.03"
+ },
+ {
+  "year": 2026,
+  "authors": "Mohamed Khater; Nagwa Zouair; Mohammed Nour Eldeen Sayed; Mohamed Alkadhat; Ahmed Ameen",
+  "title": "Legislating responsibility: evaluating the impact of tourism law on ethical practices and environmental stewardship in global destinations",
+  "venue": "Scientific Culture 12(2.1)",
+  "pages": "664–677",
+  "doi": "10.5281/zenodo.122.12658",
+  "url": "",
+  "theme": "Other",
+  "region": "Global",
+  "evidence": "Policy/legal",
+  "type": "Article",
+  "tags": [
+   "tourism law",
+   "ethics",
+   "sustainability"
+  ],
+  "key": "10.5281/zenodo.122.12658"
+ },
+ {
+  "year": 2026,
+  "authors": "Ahmed Ameen; Issam Okleh; Nagwa Zouair; Maher Al-shamaileh; Mhran Alzo'ubi; Mahmoud Al Rwaidi",
+  "title": "Architectural and Cultural Significance of the Al-Bidyah Mosque: An Exploration of Islamic Heritage in the UAE",
+  "venue": "SHEDET 15(1)",
+  "pages": "61–81",
+  "doi": "10.21608/shedet.2025.398380.1309",
+  "url": "",
+  "theme": "Architecture",
+  "region": "UAE/Gulf",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "UAE",
+   "mosque",
+   "heritage",
+   "architecture"
+  ],
+  "key": "10.21608/shedet.2025.398380.1309"
+ },
+ {
+  "year": 2026,
+  "authors": "Mohamed Hisham; Ahmed Ameen; Hamada Hagras",
+  "title": "Sites of the Independent Madrasas in Cairo from Salah Al-Din Reign to the Ayyubid Dynasty's End: An Inductive and Analytical Study",
+  "venue": "Journal of the General Union of Arab Archaeologists 11(1)",
+  "pages": "238–262",
+  "doi": "10.21608/jguaa2.2025.318362.1214",
+  "url": "",
+  "theme": "Waqf",
+  "region": "Egypt",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "Cairo",
+   "madrasas",
+   "Ayyubid",
+   "urban history"
+  ],
+  "key": "10.21608/jguaa2.2025.318362.1214"
+ },
+ {
+  "year": 2025,
+  "authors": "Abdelrazek Elnaggar; Hend Mahgoub; Laura Maestro-Guijarro; Ana Crespo Ibáñez; Paula María Carmona-Quiroga; Santiago Sánchez-Cortés; Žiga Rehar; Gregor Kos; Ahmed Ameen; Marko Frelih; Matija Strlič; Mohamed Oujja; Marta Castillejo",
+  "title": "Multianalytical Study of Amuletic and Talismanic Islamic-African Paper Manuscripts in the Slovene Ethnographic Museum",
+  "venue": "ChemPlusChem",
+  "pages": "",
+  "doi": "10.1002/cplu.202500433",
+  "url": "",
+  "theme": "Heritage Science",
+  "region": "Africa/Europe",
+  "evidence": "Material analysis",
+  "type": "Article",
+  "tags": [
+   "heritage science",
+   "manuscripts",
+   "paper",
+   "spectroscopy"
+  ],
+  "key": "10.1002/cplu.202500433"
+ },
+ {
+  "year": 2025,
+  "authors": "Ahmed Ameen; Yassmin Youssef Kasem",
+  "title": "The Visual Impact of Colors in Ottoman Inscriptions: A Case Study of the Sultan Bayezid II Mosque in Didymóteichon, Greece",
+  "venue": "Journal of Islamic Architecture 8(4)",
+  "pages": "",
+  "doi": "10.18860/jia.v8i4.27523",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Ottoman",
+   "epigraphy",
+   "color",
+   "Greece"
+  ],
+  "key": "10.18860/jia.v8i4.27523"
+ },
+ {
+  "year": 2025,
+  "authors": "Ahmed Ameen; Hamada Hagras",
+  "title": "Textual Embodiments of the Sacred: Analyzing the Qur’anic Inscriptions in Al-Aṣḥāb Mosque of Quanzhou-China",
+  "venue": "SHEDET 14",
+  "pages": "125–143",
+  "doi": "10.21608/shedet.2025.352617.1283",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "China",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Qur’anic inscriptions",
+   "China",
+   "mosque",
+   "textuality"
+  ],
+  "key": "10.21608/shedet.2025.352617.1283"
+ },
+ {
+  "year": 2025,
+  "authors": "Ahmed Ameen",
+  "title": "Voices in Stone: The Architectural and Epigraphic Legacy of Ottoman Greece",
+  "venue": "Qalamos Heritage Studies 1(1)",
+  "pages": "26–37",
+  "doi": "",
+  "url": "https://qalampk.nl/index.php/ojs_files/article/view/2",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Ottoman Greece",
+   "architecture",
+   "epigraphy"
+  ],
+  "key": "https://qalampk.nl/index.php/ojs_files/article/view/2"
+ },
+ {
+  "year": 2025,
+  "authors": "Suzan I. M. Abed; Ahmed Ameen; Atef Mansour M. Ramadan",
+  "title": "The Ilkhanid Mints: An introduction to study of the urban transformation in Iranian cities in the era of Ilkhanid Mongols (656-757 AH / 1258-1355 AD)",
+  "venue": "Journal of the Centre for Islamic Numismatics–Egypt 8(8)",
+  "pages": "201–224",
+  "doi": "10.21608/ince.2026.448237.1037",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "Iran/Central Asia",
+  "evidence": "Numismatics",
+  "type": "Article",
+  "tags": [
+   "numismatics",
+   "Ilkhanid",
+   "urban history"
+  ],
+  "key": "10.21608/ince.2026.448237.1037"
+ },
+ {
+  "year": 2024,
+  "authors": "Mohamed Abd al-Sattār Uthmān; Ahmed Ameen",
+  "title": "Iwān El-Ser at Al-Malik Al-Şāleḥ Najm Al-Dīn Ayyūb Complex in Cairo: Reconsidered Based on Its Foundation Inscription",
+  "venue": "SHEDET 12",
+  "pages": "1–9",
+  "doi": "10.21608/SHEDET.2024.332846",
+  "url": "",
+  "theme": "Waqf",
+  "region": "Egypt",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Cairo",
+   "foundation inscription",
+   "Ayyubid"
+  ],
+  "key": "10.21608/SHEDET.2024.332846"
+ },
+ {
+  "year": 2024,
+  "authors": "Mohamed Morsy; Ahmed Ameen",
+  "title": "Collective Waqf and its role in sponsoring the Ottoman Mosques and Medreses in Greece, late 13th/19th and beginning 14th/20th centuries: civilized and archival study",
+  "venue": "Journal of the Faculty of Archaeology, Cairo University 16(27)",
+  "pages": "1363–1393",
+  "doi": "10.21608/JARCH.2024.333288",
+  "url": "",
+  "theme": "Waqf",
+  "region": "Greece/Balkans",
+  "evidence": "Archival/waqf",
+  "type": "Article",
+  "tags": [
+   "waqf",
+   "Greece",
+   "mosques",
+   "medreses"
+  ],
+  "key": "10.21608/JARCH.2024.333288"
+ },
+ {
+  "year": 2023,
+  "authors": "Ahmed Ameen",
+  "title": "Evliyâ Çelebi and his work “Seyahatname”: a reading in his methodology of documenting the heritage of Athens and its buildings (in Arabic)",
+  "venue": "Journal of Archaeology and Tourism-MUST 1(2)",
+  "pages": "1–20",
+  "doi": "10.21608/JATMUST.2023.284702",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "Greece/Balkans",
+  "evidence": "Travellers' accounts",
+  "type": "Article",
+  "tags": [
+   "Evliyâ Çelebi",
+   "Athens",
+   "travellers"
+  ],
+  "key": "10.21608/JATMUST.2023.284702"
+ },
+ {
+  "year": 2022,
+  "authors": "Ahmed Ameen",
+  "title": "The origin of the Twin-Basilica Church and its functional context (in Arabic)",
+  "venue": "Journal of Archaeology and Tourism-MUST 1(1)",
+  "pages": "41–58",
+  "doi": "10.21608/JATMUST.2022.253381",
+  "url": "",
+  "theme": "Architecture",
+  "region": "—",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "church",
+   "basilica",
+   "function"
+  ],
+  "key": "10.21608/JATMUST.2022.253381"
+ },
+ {
+  "year": 2022,
+  "authors": "Atef Mansour Ramadan; Ahmed Ameen",
+  "title": "The Credibility of Religious Quotes on Islamic Numismatics Considering Its Actual Historical Context: The Case of Ṭarmashīrīn Khan",
+  "venue": "SHEDET 9",
+  "pages": "234–245",
+  "doi": "10.21608/SHEDET.2022.248913",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "Iran/Central Asia",
+  "evidence": "Numismatics",
+  "type": "Article",
+  "tags": [
+   "numismatics",
+   "source criticism",
+   "Central Asia"
+  ],
+  "key": "10.21608/SHEDET.2022.248913"
+ },
+ {
+  "year": 2021,
+  "authors": "Ahmed Ameen",
+  "title": "Ottoman Waqf–Medreses in Greece: Archival & architectural study",
+  "venue": "Journal of Architecture, Arts and Humanistic Science 6(25)",
+  "pages": "566–597",
+  "doi": "10.21608/MJAF.2020.25255.1534",
+  "url": "",
+  "theme": "Waqf",
+  "region": "Greece/Balkans",
+  "evidence": "Archival/waqf",
+  "type": "Article",
+  "tags": [
+   "waqf",
+   "medrese",
+   "Greece",
+   "waqfiyya"
+  ],
+  "key": "10.21608/MJAF.2020.25255.1534"
+ },
+ {
+  "year": 2020,
+  "authors": "Mohammed S. Tawfiq; Almudena Ariza Armada; Atef Mansour Mohammad; Ahmed Ameen; Mervat Abd El-Hady Abd El-Latif",
+  "title": "A Historical and Numismatic study of the Dinars of the Sultan Maḥmūd b. Sabuktakīn at Nishapur",
+  "venue": "Espacio, Tiempo y Forma. III. Historia Medieval 33",
+  "pages": "613–652",
+  "doi": "10.5944/etfiii.33.2020.24006",
+  "url": "",
+  "theme": "History & Sources",
+  "region": "Iran/Central Asia",
+  "evidence": "Numismatics",
+  "type": "Article",
+  "tags": [
+   "numismatics",
+   "Nishapur",
+   "Ghaznavid"
+  ],
+  "key": "10.5944/etfiii.33.2020.24006"
+ },
+ {
+  "year": 2020,
+  "authors": "Ahmed Ameen",
+  "title": "The Ottoman bedestens in Greece",
+  "venue": "SHEDET 7",
+  "pages": "",
+  "doi": "10.36816/SHEDET.2020.32863.1021",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "Ottoman",
+   "bedesten",
+   "commercial architecture"
+  ],
+  "key": "10.36816/SHEDET.2020.32863.1021"
+ },
+ {
+  "year": 2020,
+  "authors": "Ahmed Ameen",
+  "title": "The significance of the Qur’anic quotation ‘Mā shā’ Allāh’ on both Ottoman and Greek heritages in the Balkans",
+  "venue": "EJARS 10(1)",
+  "pages": "73–85",
+  "doi": "10.21608/EJARS.2020.98963",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Balkans",
+   "inscriptions",
+   "shared heritage"
+  ],
+  "key": "10.21608/EJARS.2020.98963"
+ },
+ {
+  "year": 2019,
+  "authors": "Ahmed Ameen",
+  "title": "Towards a corpus of the inscriptions of Ottoman buildings in Greece",
+  "venue": "Journal of Anthropological and Archaeological Sciences 1(2)",
+  "pages": "36–46",
+  "doi": "",
+  "url": "https://lupinepublishers.com/anthropological-and-archaeological-sciences/fulltext/towards-a-corpus-of-the-inscriptions-of-ottoman-buildings-in-greece.ID.000107.php",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "corpus",
+   "inscriptions",
+   "Greece"
+  ],
+  "key": "https://lupinepublishers.com/anthropological-and-archaeological-sciences/fulltext/towards-a-corpus-of-the-inscriptions-of-ottoman-buildings-in-greece.ID.000107.php"
+ },
+ {
+  "year": 2019,
+  "authors": "Ahmed Ameen",
+  "title": "Mamlūk Ranks: Motives of usage and their visual impact",
+  "venue": "Abydos 1",
+  "pages": "5–19",
+  "doi": "10.21608/abidus.2019.223391",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Egypt",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Mamluk",
+   "ranks",
+   "visual impact"
+  ],
+  "key": "10.21608/abidus.2019.223391"
+ },
+ {
+  "year": 2019,
+  "authors": "Ahmed Ameen",
+  "title": "The Ottoman architecture in Greece then and now: Quantitative approach",
+  "venue": "SHEDET 6",
+  "pages": "93–115",
+  "doi": "10.36816/shedet.006.06",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Quantitative",
+  "type": "Article",
+  "tags": [
+   "quantitative",
+   "Ottoman",
+   "heritage"
+  ],
+  "key": "10.36816/shedet.006.06"
+ },
+ {
+  "year": 2019,
+  "authors": "Ahmed Ameen",
+  "title": "Patrons of Ottoman Mosques in Greece reconsidered in light of the Ierapetra Mosque of Crete",
+  "venue": "Journal of Islamic Architecture 5(3)",
+  "pages": "137–144",
+  "doi": "10.18860/jia.v5i3.5365",
+  "url": "",
+  "theme": "Waqf",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "patronage",
+   "mosques",
+   "Crete"
+  ],
+  "key": "10.18860/jia.v5i3.5365"
+ },
+ {
+  "year": 2019,
+  "authors": "Ahmed Ameen",
+  "title": "Bilingual and trilingual inscriptions of the Ottoman buildings in Greece: a search for the history of late Ottoman period",
+  "venue": "Abgadiyat 14",
+  "pages": "208–243",
+  "doi": "10.21608/abgad.2019.140483",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Greece/Balkans",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "multilingual",
+   "epigraphy",
+   "late Ottoman"
+  ],
+  "key": "10.21608/abgad.2019.140483"
+ },
+ {
+  "year": 2016,
+  "authors": "Ahmed Ameen",
+  "title": "The Küçük Cami of Athens: Some considerations in the light of the Travelers' works",
+  "venue": "Turcica 47",
+  "pages": "73–97",
+  "doi": "10.2143/TURC.47.0.3164942",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Travellers' accounts",
+  "type": "Article",
+  "tags": [
+   "Athens",
+   "mosque",
+   "travellers"
+  ],
+  "key": "10.2143/TURC.47.0.3164942"
+ },
+ {
+  "year": 2016,
+  "authors": "Ahmed Ameen",
+  "title": "Characteristics of the Ottoman Traditional Houses in the Libyan Old City of Ghadames: Case Study of Da Babanei House",
+  "venue": "SHEDET 3",
+  "pages": "43–77",
+  "doi": "10.36816/shedet.003.07",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Libya",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "Ghadames",
+   "vernacular",
+   "house"
+  ],
+  "key": "10.36816/shedet.003.07"
+ },
+ {
+  "year": 2014,
+  "authors": "Ahmed Ameen",
+  "title": "The Mehmet Khalil Agha Mosque in the Greek city of Drama",
+  "venue": "SHEDET 1(1)",
+  "pages": "19–34",
+  "doi": "10.36816/shedet.001.02",
+  "url": "",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "Drama",
+   "mosque",
+   "wall paintings"
+  ],
+  "key": "10.36816/shedet.001.02"
+ },
+ {
+  "year": 2013,
+  "authors": "Ahmed Ameen; Mohamed K. Khallaf",
+  "title": "Dekhaila's Dry-Deck: an archaeological and conservational study",
+  "venue": "Journal of the General Union of Arab Archaeologists 14(1)",
+  "pages": "152–185",
+  "doi": "10.21608/jguaa.2013.2994",
+  "url": "",
+  "theme": "Heritage Science",
+  "region": "Egypt",
+  "evidence": "Architectural survey",
+  "type": "Article",
+  "tags": [
+   "dry dock",
+   "conservation",
+   "Alexandria"
+  ],
+  "key": "10.21608/jguaa.2013.2994"
+ },
+ {
+  "year": 2011,
+  "authors": "Ahmed Ameen",
+  "title": "The Inscriptions of the Damascene Ottoman Residences",
+  "venue": "Abgadiyat 6",
+  "pages": "105–120",
+  "doi": "10.21608/abgad.2011.58283",
+  "url": "",
+  "theme": "Epigraphy",
+  "region": "Syria/Levant",
+  "evidence": "Inscriptions",
+  "type": "Article",
+  "tags": [
+   "Damascus",
+   "houses",
+   "inscriptions"
+  ],
+  "key": "10.21608/abgad.2011.58283"
+ },
+ {
+  "year": 2017,
+  "authors": "Ahmed Ameen",
+  "title": "Islamic Architecture in Greece: Mosques",
+  "venue": "Centre of Islamic Civilization, Bibliotheca Alexandrina (ISBN 978-977-452-434-6)",
+  "pages": "",
+  "doi": "",
+  "url": "https://bibalex.org/IslamicCivilization/en/Publication/PublicationDetails.aspx?Id=2014",
+  "theme": "Architecture",
+  "region": "Greece/Balkans",
+  "evidence": "Architectural survey",
+  "type": "Book",
+  "tags": [
+   "book",
+   "mosques",
+   "Greece",
+   "catalogue"
+  ],
+  "key": "https://bibalex.org/IslamicCivilization/en/Publication/PublicationDetails.aspx?Id=2014"
+ }
+];
 
     // ====== 4) HELPERS ======
+
+    // ====== CITATION HOOKS (keyed by DOI or URL) ======
+    const CITE = {
+ "10.32350/jitc.162.02": {
+  "c": "samāʿāt as documentary evidence of how texts were transmitted.",
+  "m": "Using audition certificates to reconstruct transmission networks.",
+  "q": "What can samāʿāt reveal about scholarly networks that chronicles omit?"
+ },
+ "Islamic Epigraphic Heritage of the Ottoman Balkans: The Case of Didymoteicho (Greece)": {
+  "c": "the Islamic epigraphic heritage of Didymoteicho, a key Ottoman Balkan town (accepted, Abgadiyat; Scopus-indexed per CV).",
+  "m": "Site-based epigraphic recording within an Ottoman Balkan setting.",
+  "q": "How does Didymoteicho’s epigraphy compare with other Balkan towns?"
+ },
+ "10.21608/ejars.2026.511057": {
+  "c": "whether a mosque’s plan can help decode its patron and date (Zincirli Mosque, Serres).",
+  "m": "Reading plan typology as dating and patronage evidence.",
+  "q": "Can plan analysis date other undocumented Ottoman mosques?"
+ },
+ "10.5281/zenodo.21247890": {
+  "c": "a historical source on the Arabian Peninsula and Persia between 1622 and 1810.",
+  "m": "Source-critical reading of a Gulf historical compendium.",
+  "q": "What does this compendium add to Gulf history before the modern state?"
+ },
+ "10.1109/IC_ASET69920.2026.11502384": {
+  "c": "service robotics in smart tourist destinations.",
+  "m": "Applying service-robot concepts to visitor assistance.",
+  "q": "How could assistive robotics support heritage-site visitors?"
+ },
+ "10.21608/jguaa2.2025.318368.1215": {
+  "c": "the architectural styles of Ottoman-era hanging mosques in Alexandria.",
+  "m": "An interdisciplinary analysis of a distinctive local mosque type.",
+  "q": "How did Alexandria’s urban setting shape the hanging-mosque type?"
+ },
+ "10.21608/jguaa2.2026.345733.1245": {
+  "c": "an archaeological and documentary study of a historic school building in Cairo.",
+  "m": "Pairing building survey with documents.",
+  "q": "What can modern educational buildings tell us about Cairo’s multicultural past?"
+ },
+ "10.32350/jitc.161.03": {
+  "c": "Ibn al-Sābīʾ’s ʿUyūn al-Tawārīkh as a source for the early Seljuq period.",
+  "m": "Evaluating a chronicle’s value as a historical source.",
+  "q": "How does this chronicle change the picture of early Seljuq history?"
+ },
+ "10.5281/zenodo.122.12658": {
+  "c": "how tourism law shapes ethical and environmental practice.",
+  "m": "Evaluating legislation against destination outcomes.",
+  "q": "Which legal mechanisms most improve environmental stewardship?"
+ },
+ "10.21608/shedet.2025.398380.1309": {
+  "c": "an architectural and cultural reading of the Al-Bidyah Mosque as a landmark of Islamic heritage in the UAE.",
+  "m": "Reading form, materials and cultural significance together in one heritage case.",
+  "q": "How does UAE mosque architecture fit within wider Gulf and Indian Ocean traditions?"
+ },
+ "10.21608/jguaa2.2025.318362.1214": {
+  "c": "the locations of independent madrasas in Cairo from Salah al-Din to the end of the Ayyubid dynasty.",
+  "m": "Inductive, site-based analysis of educational institutions across the urban fabric.",
+  "q": "Did madrasa placement follow patronage, urban growth or educational geography?"
+ },
+ "10.1002/cplu.202500433": {
+  "c": "the first in-depth material analysis of Islamic–African amulets and talismans in a European museum: paper, inks, dyes and calligraphic features of twelve selected manuscripts.",
+  "m": "A multi-technique workflow (microscopy, hyperspectral imaging, FTIR, LIF, Raman, LIBS, furnish analysis) adaptable to other collections.",
+  "q": "Does “quasi-Islamic” paper, with a European substrate and Islamic finishing, appear in other collections?"
+ },
+ "10.18860/jia.v8i4.27523": {
+  "c": "how colour, especially red, shapes the visual impact of Ottoman inscriptions, using the Sultan Bayezid II Mosque in Didymóteichon.",
+  "m": "A colour-focused epigraphic analysis linking inscription, setting and visibility.",
+  "q": "How do colour and placement affect the legibility and public reach of inscriptions?"
+ },
+ "10.21608/shedet.2025.352617.1283": {
+  "c": "the Qur’anic inscriptions of the Al-Aṣḥāb Mosque in Quanzhou, which has 12 Arabic Qur’anic inscriptions and is the only mosque in the city to preserve its foundation inscription.",
+  "m": "Reading Qur’anic epigraphy alongside architecture and devotional practice.",
+  "q": "How did patrons and artisans express religious identity in premodern China?"
+ },
+ "https://qalampk.nl/index.php/ojs_files/article/view/2": {
+  "c": "a synthesis of the architectural and epigraphic legacy of Ottoman Greece.",
+  "m": "Combining buildings and inscriptions in one overview.",
+  "q": "Which inscription-and-building pairs best represent Ottoman Greece?"
+ },
+ "10.21608/ince.2026.448237.1037": {
+  "c": "using Ilkhanid mints to study urban transformation in Iranian cities.",
+  "m": "Reading mint data as evidence for urban change.",
+  "q": "Do mint distributions track urban growth or decline under the Ilkhanids?"
+ },
+ "10.21608/SHEDET.2024.332846": {
+  "c": "re-interpreting Iwān El-Ser in al-Ṣāliḥ Najm al-Dīn Ayyūb’s complex in Cairo through its foundation inscription.",
+  "m": "Using a foundation inscription to reassess a monument’s identity and function.",
+  "q": "Which other Cairo monuments deserve reassessment through their foundation texts?"
+ },
+ "10.21608/JARCH.2024.333288": {
+  "c": "how collective waqf funded Ottoman mosques and medreses in Greece in the 19th and early 20th centuries.",
+  "m": "An archival and civilizational study of waqf finance.",
+  "q": "How did collective waqf sustain religious institutions as Ottoman rule ended?"
+ },
+ "10.21608/JATMUST.2023.284702": {
+  "c": "Evliyâ Çelebi’s method of documenting Athens and its buildings.",
+  "m": "Evaluating a traveller’s account against surviving monuments.",
+  "q": "How reliable is Evliyâ Çelebi as a source for Ottoman Athens?"
+ },
+ "10.21608/JATMUST.2022.253381": {
+  "c": "the origin and functional context of the twin-basilica church type.",
+  "m": "Tracing a building type to its origin and use.",
+  "q": "What function explains the twin-basilica plan?"
+ },
+ "10.21608/SHEDET.2022.248913": {
+  "c": "testing religious quotations on Islamic coins against their actual historical context (Ṭarmashīrīn Khan).",
+  "m": "Source criticism that checks coin legends against historical evidence.",
+  "q": "Do religious formulas on coinage reliably reflect a ruler’s actual policy?"
+ },
+ "10.21608/MJAF.2020.25255.1534": {
+  "c": "Ottoman waqf–medreses in Greece, read through archival documents and architecture, including the foundation inscriptions of Osman Efendi (Athens) and Haci Mehmed Bey (Mytilene).",
+  "m": "Cross-reading waqf documents, inscriptions and buildings.",
+  "q": "What do waqfiyyas reveal about staff, salaries and daily scholastic life?"
+ },
+ "10.5944/etfiii.33.2020.24006": {
+  "c": "a historical and numismatic study of the dinars of Sultan Maḥmūd b. Sabuktakīn minted at Nishapur.",
+  "m": "Pairing numismatic evidence with historical sources.",
+  "q": "What do Nishapur issues reveal about Ghaznavid economy and legitimacy?"
+ },
+ "10.36816/SHEDET.2020.32863.1021": {
+  "c": "a survey of Ottoman bedestens (covered markets) in Greece.",
+  "m": "A typological study of commercial architecture.",
+  "q": "How do Greek bedestens compare with those of Anatolia and the wider Balkans?"
+ },
+ "10.21608/EJARS.2020.98963": {
+  "c": "the phrase “Mā shā’ Allāh” as a shared symbol in Ottoman and Greek heritage across the Balkans.",
+  "m": "Tracing one Qur’anic formula across religious and cultural boundaries.",
+  "q": "Which other formulas travelled across communities in the Balkans?"
+ },
+ "https://lupinepublishers.com/anthropological-and-archaeological-sciences/fulltext/towards-a-corpus-of-the-inscriptions-of-ottoman-buildings-in-greece.ID.000107.php": {
+  "c": "the starting point for a corpus of inscriptions on Ottoman buildings in Greece.",
+  "m": "Building an inscription corpus as a research infrastructure.",
+  "q": "How can the corpus be extended into a searchable open dataset?"
+ },
+ "10.21608/abidus.2019.223391": {
+  "c": "why Mamlūk ranks were displayed and how they affected the visual field.",
+  "m": "Linking titles and ranks to their visual effect.",
+  "q": "How did rank display change across Mamlūk monuments?"
+ },
+ "10.36816/shedet.006.06": {
+  "c": "a quantitative baseline of how much Ottoman architecture in Greece survives today compared with the past.",
+  "m": "A quantitative inventory approach to built heritage.",
+  "q": "How do survival patterns compare in other former Ottoman territories?"
+ },
+ "10.18860/jia.v5i3.5365": {
+  "c": "reconsidering who built Ottoman mosques in Greece, via the Ierapetra Mosque on Crete.",
+  "m": "Reading patronage through inscriptions and buildings together.",
+  "q": "How did patronage differ between Crete and the mainland?"
+ },
+ "10.21608/abgad.2019.140483": {
+  "c": "bilingual and trilingual inscriptions as evidence for the late Ottoman period in Greece.",
+  "m": "Using multilingual inscriptions as historical sources.",
+  "q": "What does language choice reveal about audience and identity?"
+ },
+ "10.2143/TURC.47.0.3164942": {
+  "c": "the Küçük Cami of Athens re-read in light of travellers’ accounts.",
+  "m": "Triangulating a lost or altered monument through travellers’ works.",
+  "q": "How can travellers’ accounts recover other altered Ottoman buildings?"
+ },
+ "10.36816/shedet.003.07": {
+  "c": "Ottoman-period domestic architecture in Ghadames (Da Babanei House).",
+  "m": "A house-level case study of vernacular architecture.",
+  "q": "What shaped Ghadames houses: climate, society or Ottoman influence?"
+ },
+ "10.36816/shedet.001.02": {
+  "c": "documentation of the Mehmet Khalil Agha Mosque in the Greek city of Drama.",
+  "m": "Documenting a monument in its current state.",
+  "q": "What conservation steps would best protect Ottoman monuments in Drama?"
+ },
+ "10.21608/jguaa.2013.2994": {
+  "c": "an archaeological and conservation study of Dekhaila’s dry-deck.",
+  "m": "Combining archaeological recording with conservation assessment.",
+  "q": "How should industrial-maritime heritage be conserved?"
+ },
+ "10.21608/abgad.2011.58283": {
+  "c": "inscriptions in Ottoman residential architecture of Damascus.",
+  "m": "Epigraphy applied to domestic buildings.",
+  "q": "What do house inscriptions reveal about owners and aesthetics?"
+ },
+ "https://bibalex.org/IslamicCivilization/en/Publication/PublicationDetails.aspx?Id=2014": {
+  "c": "a catalogue of the mosque heritage of Greece, a country with roughly 300 Islamic antiquities.",
+  "m": "A catalogue-based approach to a national mosque corpus.",
+  "q": "Which mosque types in Greece are most at risk?"
+ }
+};
+
     function doiUrl(doi){ return "https://doi.org/" + encodeURIComponent(doi); }
+    function lnk(p){ return p.doi ? doiUrl(p.doi) : (p.url||""); }
 
     function toAPA(p){
       const year = p.year ? "(" + p.year + ")." : "";
       const pages = p.pages ? ", " + p.pages : "";
       const venue = p.venue ? " " + p.venue : "";
-      return (p.authors + ". " + year + " " + p.title + "." + venue + pages + ". https://doi.org/" + p.doi).replaceAll("  "," ").trim();
+      return (p.authors + ". " + year + " " + p.title + "." + venue + pages + (lnk(p)?". "+lnk(p):"")).replaceAll("  "," ").trim();
     }
 
     function toMLA(p){
@@ -460,7 +1274,7 @@
       const pages = p.pages ? ", pp. " + p.pages : "";
       const venue = p.venue ? p.venue : "";
       const year = p.year ? p.year : "";
-      return `${authors}. "${p.title}." ${venue}, ${year}${pages}. https://doi.org/${p.doi}.`.replaceAll("  "," ").trim();
+      return `${authors}. "${p.title}." ${venue}, ${year}${pages}. ${lnk(p)}.`.replaceAll("  "," ").trim();
     }
 
     function toChicago(p){
@@ -469,7 +1283,7 @@
       const venue = p.venue ? p.venue : "";
       const year = p.year ? p.year : "";
       const pages = p.pages ? ", " + p.pages : "";
-      return `${authors}. ${year}. "${p.title}." ${venue}${pages}. https://doi.org/${p.doi}.`.replaceAll("  "," ").trim();
+      return `${authors}. ${year}. "${p.title}." ${venue}${pages}. ${lnk(p)}.`.replaceAll("  "," ").trim();
     }
 
     function toBibTeX(p){
@@ -483,8 +1297,8 @@
   ,journal={${venue}}
   ,year={${p.year||""}}
   ,pages={${pages}}
-  ,doi={${p.doi}}
-  ,url={https://doi.org/${p.doi}}
+  ,doi={${p.doi||""}}
+  ,url={${lnk(p)}}
 }`;
     }
 
@@ -502,7 +1316,7 @@
         if(parts[1]) lines.push("EP  - " + parts[1].trim());
       }
       if(p.doi) lines.push("DO  - " + p.doi);
-      lines.push("UR  - https://doi.org/" + p.doi);
+      if(lnk(p)) lines.push("UR  - " + lnk(p));
       lines.push("ER  -");
       return lines.join(NL);
     }
@@ -584,9 +1398,14 @@
             <div>
               <p class="pubTitle"><strong>${p.title}</strong></p>
               <p class="pubMeta">${p.authors}<br><span>${p.venue}${p.pages?` — ${p.pages}`:""}</span> • <span>${p.year||""}</span><br>
-                DOI: <a href="${doiUrl(p.doi)}" target="_blank" rel="noopener">${p.doi}</a>
+                ${p.doi?`DOI: <a href="${lnk(p)}" target="_blank" rel="noopener">${p.doi}</a>`:(p.url?`<a href="${lnk(p)}" target="_blank" rel="noopener">Link</a>`:"")}
               </p>
+              <p class="pubMeta">${[p.type,p.region,p.evidence].filter(v=>v&&v!=="—").map(v=>`<span class="pill" style="padding:3px 8px;font-size:12px;opacity:.85">${v}</span>`).join(" ")}</p>
               <p class="pubMeta">${t.tags}: ${(p.tags||[]).map(tag=>`<span class="pill" style="padding:4px 8px;font-size:12px">${tag}</span>`).join(" ")}</p>
+              ${CITE[p.key]?`<details class="why"><summary>${t.why_btn}</summary>
+                <p><b>${t.lbl_cite}:</b> ${CITE[p.key].c}</p>
+                <p><b>${t.lbl_method}:</b> ${CITE[p.key].m}</p>
+                <p><b>${t.lbl_q}:</b> ${CITE[p.key].q}</p></details>`:""}
             </div>
             <div class="pubActions">
               <button class="btn mini" data-act="cite">${t.cite_btn}</button>
@@ -594,7 +1413,7 @@
               <button class="btn mini" data-act="chi">Chicago</button>
               <button class="btn mini" data-act="bib">${t.bib_btn}</button>
               <button class="btn mini" data-act="ris">${t.ris_btn}</button>
-              <a class="btn mini" href="${doiUrl(p.doi)}" target="_blank" rel="noopener">${t.open_doi}</a>
+              ${lnk(p)?`<a class="btn mini" href="${lnk(p)}" target="_blank" rel="noopener">${t.open_doi}</a>`:""}
             </div>
           </div>
         `;
@@ -641,15 +1460,13 @@
         if(I18N[lang] && I18N[lang][key]) el.textContent = I18N[lang][key];
       });
 
+      buildStats();
       document.getElementById("langEN").classList.toggle("active", lang === "en");
       document.getElementById("langAR").classList.toggle("active", lang === "ar");
 
       document.getElementById("q").placeholder = isAR ? "ابحث في العنوان/الوسوم/المجلة…" : "Search title / keywords / venue…";
 
-      const q = (document.getElementById("q").value || "").trim().toLowerCase();
-      if(!q){ render(PUBS); return; }
-      const filtered = PUBS.filter(p => (p.title + " " + p.venue + " " + (p.tags||[]).join(" ") + " " + p.doi).toLowerCase().includes(q));
-      render(filtered);
+      if(document.getElementById("fRegion")) applyFilters(); else render(PUBS);
     }
 
     function setTheme(theme){
@@ -660,6 +1477,7 @@
         ["thEpi","Epigraphy"],
         ["thWaqf","Waqf"],
         ["thHS","Heritage Science"],
+        ["thHist","History & Sources"],
       ];
       btns.forEach(([id,val])=>{
         const el = document.getElementById(id);
@@ -676,12 +1494,33 @@
 
       let list = PUBS;
       if(theme !== "All") list = list.filter(p => (p.theme||"") === theme);
-      if(q) list = list.filter(p => (p.title + " " + p.venue + " " + (p.tags||[]).join(" ") + " " + p.doi).toLowerCase().includes(q));
+      const fr=document.getElementById("fRegion").value, fe=document.getElementById("fEvidence").value, ft=document.getElementById("fType").value;
+      if(fr) list = list.filter(p => p.region===fr);
+      if(fe) list = list.filter(p => p.evidence===fe);
+      if(ft) list = list.filter(p => p.type===ft);
+      if(q) list = list.filter(p => (p.title + " " + p.venue + " " + (p.tags||[]).join(" ") + " " + (p.doi||"") + " " + (p.region||"") + " " + (p.evidence||"") + " " + (p.type||"")).toLowerCase().includes(q));
       render(list);
+    }
+
+    function buildStats(){
+      const t = I18N[window.__lang || "en"];
+      const chip=(n,l)=>`<div class="stat"><b>${n}</b>${l}</div>`;
+      document.getElementById("stats").innerHTML =
+        chip(PUBS.length,t.st_pubs)+chip(50,t.st_art)+chip(8,t.st_books)+chip(28,t.st_sc)+chip(72,t.st_gs)+`<div class="stat" style="flex-basis:100%;border:none;padding:0;font-size:12px">${t.st_note}</div>`;
+    }
+
+    function buildFacets(){
+      const opts=(id,label,key)=>{
+        const vals=[...new Set(PUBS.map(p=>p[key]).filter(v=>v&&v!=="—"))].sort();
+        document.getElementById(id).innerHTML=`<option value="">${label}</option>`+vals.map(v=>`<option>${v}</option>`).join("");
+        document.getElementById(id).addEventListener("change",applyFilters);
+      };
+      opts("fRegion","All regions","region"); opts("fEvidence","All evidence types","evidence"); opts("fType","All document types","type");
     }
 
     // ====== INIT ======
     buildProfileLinks();
+    buildFacets();
     setLang("en");
     setTheme("All");
 
@@ -696,6 +1535,7 @@
     document.getElementById("thEpi").addEventListener("click", ()=>setTheme("Epigraphy"));
     document.getElementById("thWaqf").addEventListener("click", ()=>setTheme("Waqf"));
     document.getElementById("thHS").addEventListener("click", ()=>setTheme("Heritage Science"));
+    document.getElementById("thHist").addEventListener("click", ()=>setTheme("History & Sources"));
     document.getElementById("downloadRIS").addEventListener("click", buildRISFile);
     document.getElementById("langEN").addEventListener("click", ()=>setLang("en"));
     document.getElementById("langAR").addEventListener("click", ()=>setLang("ar"));
